@@ -4,3 +4,45 @@
 [submodule "SDKs/windows"]
 	path = SDKs/windows
 	url = git://github.com/clickteam-sdk/windows.git
+[submodule "Extensions/windows-edif/Format-Object"]
+	path = Extensions/windows-edif/Format-Object
+	url = https://github.com/LB--/Format-Object.git
+[submodule "Extensions/windows-edif/AdvancedGlobalValues-Object"]
+	path = Extensions/windows-edif/AdvancedGlobalValues-Object
+	url = https://github.com/LB--/AdvancedGlobalValues-Object.git
+[submodule "Extensions/rSDK/SlowLoop-Object"]
+	path = Extensions/rSDK/SlowLoop-Object
+	url = https://github.com/LB--/SlowLoop-Object.git
+[submodule "Extensions/rSDK/InternalList-Object"]
+	path = Extensions/rSDK/InternalList-Object
+	url = https://github.com/LB--/InternalList-Object.git
+[submodule "Extensions/rSDK/Int16384-Object"]
+	path = Extensions/rSDK/Int16384-Object
+	url = https://github.com/LB--/Int16384-Object.git
+[submodule "Extensions/rSDK/InlineLoop-Object"]
+	path = Extensions/rSDK/InlineLoop-Object
+	url = https://github.com/LB--/InlineLoop-Object.git
+[submodule "Extensions/rSDK/FileStream-Object"]
+	path = Extensions/rSDK/FileStream-Object
+	url = https://github.com/LB--/FileStream-Object.git
+[submodule "Extensions/rSDK/AdvancedInt64-Object"]
+	path = Extensions/rSDK/AdvancedInt64-Object
+	url = https://github.com/LB--/AdvancedInt64-Object.git
+[submodule "Extensions/rSDK/AdvancedFunction-Object"]
+	path = Extensions/rSDK/AdvancedFunction-Object
+	url = https://github.com/LB--/AdvancedFunction-Object.git
+[submodule "Extensions/Java/OpenURLs-jobject"]
+	path = Extensions/Java/OpenURLs-jobject
+	url = https://github.com/LB--/OpenURLs-jobject.git
+[submodule "Extensions/Java/AsciiChar-jobject"]
+	path = Extensions/Java/AsciiChar-jobject
+	url = https://github.com/LB--/AsciiChar-jobject.git
+[submodule "Extensions/Java/Ascii-jobject"]
+	path = Extensions/Java/Ascii-jobject
+	url = https://github.com/LB--/Ascii-jobject.git
+[submodule "Extensions/windows-edif/StringAdd-Object"]
+	path = Extensions/windows-edif/StringAdd-Object
+	url = https://github.com/LB--/StringAdd-Object.git
+[submodule "Extensions/windows-edif/StructuredData-Object"]
+	path = Extensions/windows-edif/StructuredData-Object
+	url = https://github.com/LB--/StructuredData-Object.git
