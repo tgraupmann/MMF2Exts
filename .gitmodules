@@ -52,3 +52,6 @@
 [submodule "SDKs/android"]
 	path = SDKs/android
 	url = git://github.com/clickteam-sdk/android.git
+[submodule "SDKs/anaconda"]
+	path = SDKs/anaconda
+	url = git://github.com/matpow2/anaconda.git
