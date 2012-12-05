@@ -55,27 +55,9 @@
 [submodule "SDKs/anaconda"]
 	path = SDKs/anaconda
 	url = git://github.com/matpow2/anaconda.git
-[submodule "Extensions/rSDK/Perspective"]
-	path = Extensions/rSDK/Perspective
-	url = git://github.com/Andos/Perspective.git
-[submodule "Extensions/rSDK/FunctionEggtimer"]
-	path = Extensions/rSDK/FunctionEggtimer
-	url = git://github.com/Andos/FunctionEggtimer.git
-[submodule "Extensions/rSDK/Easing"]
-	path = Extensions/rSDK/Easing
-	url = git://github.com/Andos/Easing.git
-[submodule "Extensions/rSDK/Parallaxer"]
-	path = Extensions/rSDK/Parallaxer
-	url = git://github.com/Andos/Parallaxer.git
 [submodule "Extensions/windows-edif/CreateByName"]
 	path = Extensions/windows-edif/CreateByName
 	url = git://github.com/Andos/CreateByName.git
-[submodule "Extensions/rSDK/DeadReckoning"]
-	path = Extensions/rSDK/DeadReckoning
-	url = git://github.com/Andos/DeadReckoning.git
-[submodule "Extensions/rSDK/Flocking"]
-	path = Extensions/rSDK/Flocking
-	url = git://github.com/Andos/Flocking.git
 [submodule "Libraries/lacewing"]
 	path = Libraries/lacewing
 	url = git://github.com/udp/lacewing.git
