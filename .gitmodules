@@ -61,3 +61,21 @@
 [submodule "Libraries/lacewing"]
 	path = Libraries/lacewing
 	url = git://github.com/udp/lacewing.git
+[submodule "Extensions/windows/Perspective"]
+	path = Extensions/windows/Perspective
+	url = git://github.com/Andos/Perspective.git
+[submodule "Extensions/windows/FunctionEggtimer"]
+	path = Extensions/windows/FunctionEggtimer
+	url = git://github.com/Andos/FunctionEggtimer.git
+[submodule "Extensions/windows/Easing"]
+	path = Extensions/windows/Easing
+	url = git://github.com/Andos/Easing.git
+[submodule "Extensions/windows/Parallaxer"]
+	path = Extensions/windows/Parallaxer
+	url = git://github.com/Andos/Parallaxer.git
+[submodule "Extensions/windows/DeadReckoning"]
+	path = Extensions/windows/DeadReckoning
+	url = git://github.com/Andos/DeadReckoning.git
+[submodule "Extensions/windows/Flocking"]
+	path = Extensions/windows/Flocking
+	url = git://github.com/Andos/Flocking.git
