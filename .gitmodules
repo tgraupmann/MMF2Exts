@@ -46,3 +46,6 @@
 [submodule "Extensions/windows-edif/StructuredData-Object"]
 	path = Extensions/windows-edif/StructuredData-Object
 	url = https://github.com/LB--/StructuredData-Object.git
+[submodule "Tools/mmf2extdoc"]
+	path = Tools/mmf2extdoc
+	url = git://github.com/cbranch/mmf2extdoc.git
