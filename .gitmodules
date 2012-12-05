@@ -76,3 +76,6 @@
 [submodule "Extensions/rSDK/Flocking"]
 	path = Extensions/rSDK/Flocking
 	url = git://github.com/Andos/Flocking.git
+[submodule "Libraries/lacewing"]
+	path = Libraries/lacewing
+	url = git://github.com/udp/lacewing.git
