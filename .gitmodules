@@ -1,0 +1,3 @@
+[submodule "SDKs/windows-edif"]
+	path = SDKs/windows-edif
+	url = git://github.com/clickteam-sdk/windows-edif.git
