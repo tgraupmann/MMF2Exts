@@ -94,3 +94,6 @@
 [submodule "SDKs/rSDK"]
 	path = SDKs/rSDK
 	url = git://github.com/clickteam-plugin/rSDK.git
+[submodule "Extensions/windows-edif/StochasticUtility"]
+	path = Extensions/windows-edif/StochasticUtility
+	url = git://github.com/clickteam-plugin/StochasticUtility.git
