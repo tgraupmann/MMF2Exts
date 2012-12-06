@@ -79,3 +79,6 @@
 [submodule "Extensions/windows/Flocking"]
 	path = Extensions/windows/Flocking
 	url = git://github.com/Andos/Flocking.git
+[submodule "Extensions/windows/XLua"]
+	path = Extensions/windows/XLua
+	url = git://github.com/jaquadro/XLua.git
