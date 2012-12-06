@@ -85,3 +85,6 @@
 [submodule "Extensions/rSDK/ValueAdd"]
 	path = Extensions/rSDK/ValueAdd
 	url = git://github.com/clickteam-plugin/ValueAdd.git
+[submodule "Extensions/windows/SelectObjectExtension"]
+	path = Extensions/windows/SelectObjectExtension
+	url = git://github.com/clickteam-plugin/SelectObjectExtension.git
