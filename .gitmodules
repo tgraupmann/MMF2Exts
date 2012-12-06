@@ -82,3 +82,6 @@
 [submodule "Extensions/windows/XLua"]
 	path = Extensions/windows/XLua
 	url = git://github.com/jaquadro/XLua.git
+[submodule "Extensions/rSDK/ValueAdd"]
+	path = Extensions/rSDK/ValueAdd
+	url = git://github.com/clickteam-plugin/ValueAdd.git
