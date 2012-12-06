@@ -88,3 +88,6 @@
 [submodule "Extensions/windows/SelectObjectExtension"]
 	path = Extensions/windows/SelectObjectExtension
 	url = git://github.com/clickteam-plugin/SelectObjectExtension.git
+[submodule "Tools/chowdren"]
+	path = Tools/chowdren
+	url = git://github.com/matpow2/chowdren.git
