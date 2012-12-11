@@ -100,3 +100,6 @@
 [submodule "Extensions/windows/VOLINFO"]
 	path = Extensions/windows/VOLINFO
 	url = git://github.com/clickteam-plugin/VOLINFO.git
+[submodule "Extensions/windows/PackX"]
+	path = Extensions/windows/PackX
+	url = git://github.com/clickteam-plugin/PackX.git
