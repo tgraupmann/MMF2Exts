@@ -103,3 +103,6 @@
 [submodule "Extensions/windows/PackX"]
 	path = Extensions/windows/PackX
 	url = git://github.com/clickteam-plugin/PackX.git
+[submodule "Extensions/windows/Download"]
+	path = Extensions/windows/Download
+	url = git://github.com/clickteam-plugin/Download.git
