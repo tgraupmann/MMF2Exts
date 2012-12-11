@@ -97,3 +97,6 @@
 [submodule "Extensions/windows-edif/StochasticUtility"]
 	path = Extensions/windows-edif/StochasticUtility
 	url = git://github.com/clickteam-plugin/StochasticUtility.git
+[submodule "Extensions/windows/VOLINFO"]
+	path = Extensions/windows/VOLINFO
+	url = git://github.com/clickteam-plugin/VOLINFO.git
