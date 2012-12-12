@@ -109,3 +109,6 @@
 [submodule "Extensions/windows/CDAudio"]
 	path = Extensions/windows/CDAudio
 	url = git://github.com/clickteam-plugin/CDAudio.git
+[submodule "Extensions/windows/BitMask"]
+	path = Extensions/windows/BitMask
+	url = git://github.com/clickteam-plugin/BitMask.git
