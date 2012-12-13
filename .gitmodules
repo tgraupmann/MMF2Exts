@@ -118,3 +118,6 @@
 [submodule "Extensions/windows-edif/StringCmp"]
 	path = Extensions/windows-edif/StringCmp
 	url = git://github.com/clickteam-plugin/StringCmp.git
+[submodule "Extensions/windows-edif/SHA-1"]
+	path = Extensions/windows-edif/SHA-1
+	url = git://github.com/clickteam-plugin/SHA-1.git
