@@ -115,3 +115,6 @@
 [submodule "Extensions/windows-edif/StringReplacer"]
 	path = Extensions/windows-edif/StringReplacer
 	url = git://github.com/clickteam-plugin/StringReplacer.git
+[submodule "Extensions/windows-edif/StringCmp"]
+	path = Extensions/windows-edif/StringCmp
+	url = git://github.com/clickteam-plugin/StringCmp.git
