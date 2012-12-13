@@ -124,3 +124,6 @@
 [submodule "Extensions/windows-edif/RangeHandler"]
 	path = Extensions/windows-edif/RangeHandler
 	url = git://github.com/clickteam-plugin/RangeHandler.git
+[submodule "Extensions/windows-edif/PortAudio"]
+	path = Extensions/windows-edif/PortAudio
+	url = git://github.com/clickteam-plugin/PortAudio.git
