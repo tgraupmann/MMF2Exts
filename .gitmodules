@@ -112,3 +112,6 @@
 [submodule "Extensions/windows/BitMask"]
 	path = Extensions/windows/BitMask
 	url = git://github.com/clickteam-plugin/BitMask.git
+[submodule "Extensions/windows-edif/StringReplacer"]
+	path = Extensions/windows-edif/StringReplacer
+	url = git://github.com/clickteam-plugin/StringReplacer.git
