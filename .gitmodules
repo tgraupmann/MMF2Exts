@@ -157,3 +157,6 @@
 [submodule "Extensions/rSDK/DownloadPlusPlus"]
 	path = Extensions/rSDK/DownloadPlusPlus
 	url = git://github.com/clickteam-plugin/DonwloadPlusPlus.git
+[submodule "Extensions/anaconda/ZlibStream"]
+	path = Extensions/anaconda/ZlibStream
+	url = git://github.com/clickteam-plugin/ZlibStream.git
