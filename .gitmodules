@@ -133,3 +133,6 @@
 [submodule "Extensions/windows-edif/MyCharSet"]
 	path = Extensions/windows-edif/MyCharSet
 	url = git://github.com/clickteam-plugin/MyCharSet.git
+[submodule "Extensions/rSDK/ZlibStream"]
+	path = Extensions/rSDK/ZlibStream
+	url = git://github.com/clickteam-plugin/ZlibStream.git
