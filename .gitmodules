@@ -151,3 +151,6 @@
 [submodule "Extensions/rSDK/OpenCV"]
 	path = Extensions/rSDK/OpenCV
 	url = git://github.com/clickteam-plugin/OpenCV.git
+[submodule "Extensions/rSDK/FixedValueList"]
+	path = Extensions/rSDK/FixedValueList
+	url = git://github.com/clickteam-plugin/FixedValueList.git
