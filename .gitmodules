@@ -136,3 +136,6 @@
 [submodule "Extensions/rSDK/ZlibStream"]
 	path = Extensions/rSDK/ZlibStream
 	url = git://github.com/clickteam-plugin/ZlibStream.git
+[submodule "Extensions/rSDK/WaveOut"]
+	path = Extensions/rSDK/WaveOut
+	url = git://github.com/clickteam-plugin/WaveOut.git
