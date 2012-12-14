@@ -148,3 +148,6 @@
 [submodule "Extensions/rSDK/PBKDF2"]
 	path = Extensions/rSDK/PBKDF2
 	url = git://github.com/clickteam-plugin/PBKDF2.git
+[submodule "Extensions/rSDK/OpenCV"]
+	path = Extensions/rSDK/OpenCV
+	url = git://github.com/clickteam-plugin/OpenCV.git
