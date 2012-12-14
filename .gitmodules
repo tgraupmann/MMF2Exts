@@ -145,3 +145,6 @@
 [submodule "Extensions/rSDK/TabControl"]
 	path = Extensions/rSDK/TabControl
 	url = git://github.com/clickteam-plugin/TabControl.git
+[submodule "Extensions/rSDK/PBKDF2"]
+	path = Extensions/rSDK/PBKDF2
+	url = git://github.com/clickteam-plugin/PBKDF2.git
