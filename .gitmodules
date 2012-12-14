@@ -139,3 +139,6 @@
 [submodule "Extensions/rSDK/WaveOut"]
 	path = Extensions/rSDK/WaveOut
 	url = git://github.com/clickteam-plugin/WaveOut.git
+[submodule "Extensions/rSDK/UnzipMe"]
+	path = Extensions/rSDK/UnzipMe
+	url = git://github.com/clickteam-plugin/UnzipMe.git
