@@ -154,3 +154,6 @@
 [submodule "Extensions/rSDK/FixedValueList"]
 	path = Extensions/rSDK/FixedValueList
 	url = git://github.com/clickteam-plugin/FixedValueList.git
+[submodule "Extensions/rSDK/DownloadPlusPlus"]
+	path = Extensions/rSDK/DownloadPlusPlus
+	url = git://github.com/clickteam-plugin/DonwloadPlusPlus.git
