@@ -160,3 +160,6 @@
 [submodule "Extensions/anaconda/ZlibStream"]
 	path = Extensions/anaconda/ZlibStream
 	url = git://github.com/clickteam-plugin/ZlibStream.git
+[submodule "SDKs/html5"]
+	path = SDKs/html5
+	url = git://github.com/clickteam-sdk/html5.git
