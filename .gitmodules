@@ -163,3 +163,12 @@
 [submodule "SDKs/html5"]
 	path = SDKs/html5
 	url = git://github.com/clickteam-sdk/html5.git
+[submodule "Extensions/rSDK/TileMap"]
+	path = Extensions/rSDK/TileMap
+	url = git://github.com/clickteam-plugin/TileMap.git
+[submodule "Extensions/rSDK/TileMapViewport"]
+	path = Extensions/rSDK/TileMapViewport
+	url = git://github.com/clickteam-plugin/TileMapViewport.git
+[submodule "Extensions/rSDK/Surface"]
+	path = Extensions/rSDK/Surface
+	url = git://github.com/clickteam-plugin/Surface.git
