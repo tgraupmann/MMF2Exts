@@ -172,3 +172,6 @@
 [submodule "Extensions/rSDK/Surface"]
 	path = Extensions/rSDK/Surface
 	url = git://github.com/clickteam-plugin/Surface.git
+[submodule "Extensions/windows-edif/OpenAL"]
+	path = Extensions/windows-edif/OpenAL
+	url = git://github.com/clickteam-plugin/OpenAL.git
