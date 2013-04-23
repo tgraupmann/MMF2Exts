@@ -1,9 +1,9 @@
 [submodule "SDKs/windows-edif"]
 	path = SDKs/windows-edif
-	url = git://github.com/clickteam-sdk/windows-edif.git
+	url = git://github.com/ClickteamLLC/windows-edif.git
 [submodule "SDKs/windows"]
 	path = SDKs/windows
-	url = git://github.com/clickteam-sdk/windows.git
+	url = git://github.com/ClickteamLLC/windows.git
 [submodule "Extensions/windows-edif/Format-Object"]
 	path = Extensions/windows-edif/Format-Object
 	url = https://github.com/LB--/Format-Object.git
@@ -51,7 +51,7 @@
 	url = git://github.com/cbranch/mmf2extdoc.git
 [submodule "SDKs/android"]
 	path = SDKs/android
-	url = git://github.com/clickteam-sdk/android.git
+	url = git://github.com/ClickteamLLC/android.git
 [submodule "SDKs/anaconda"]
 	path = SDKs/anaconda
 	url = git://github.com/matpow2/anaconda.git
@@ -162,7 +162,7 @@
 	url = git://github.com/clickteam-plugin/ZlibStream.git
 [submodule "SDKs/html5"]
 	path = SDKs/html5
-	url = git://github.com/clickteam-sdk/html5.git
+	url = git://github.com/ClickteamLLC/html5.git
 [submodule "Extensions/rSDK/TileMap"]
 	path = Extensions/rSDK/TileMap
 	url = git://github.com/clickteam-plugin/TileMap.git
