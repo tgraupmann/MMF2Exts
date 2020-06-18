@@ -13,7 +13,7 @@
 		"ActionMenu": [
 			[
 				"Setup",
-				[ 19, "Init" ],
+				[ 19, "Initialize Extension" ],
 				[ 20, "Connect to xLua Script" ]
 			],
 			[
@@ -55,7 +55,7 @@
 		],
 		"ExpressionMenu": [
 			[ 0, "Is Extension Initialized" ],
-			[ 1, "Init Extension" ],
+			[ 1, "Initialize Extension" ],
 			[ 2, "Get RGB" ],
 			[ 3, "Get Frame Count" ]
 		],
@@ -198,7 +198,7 @@
 				]
 			},
 			{
-				"Title": "Init"
+				"Title": "Initialize Extension"
 			},
 			{
 				"Title": "Connect to xLua Script",
@@ -209,13 +209,13 @@
 		],
 		"Conditions": [
 			{
-				"Title": "Is ChromaSDK Initialized?",
+				"Title": "Is Extension Initialized?",
 				"Triggered": false,
 				"Parameters": [
 				]
 			},
 			{
-				"Title": "Initialize ChromaSDK",
+				"Title": "Initialize Extension",
 				"Triggered": false,
 				"Parameters": [
 				]
