@@ -50,7 +50,9 @@ Extension::Extension(RUNDATA * _rdPtr, EDITDATA * edPtr, CreateObjectInfo * cobP
 	LinkAction(actionIndex++, OffsetColorsAllFramesName);
 	LinkAction(actionIndex++, CopyNonZeroTargetAllKeysAllFramesName);
 	LinkAction(actionIndex++, CopyNonZeroAllKeysAllFramesName);
+	LinkAction(actionIndex++, ActInit);
 	LinkAction(actionIndex++, ConnectXLua);
+	LinkAction(actionIndex++, StopAnimationName);
 
 	unsigned int conditionIndex = 0;
 	LinkCondition(conditionIndex++, CondIsInitialized);

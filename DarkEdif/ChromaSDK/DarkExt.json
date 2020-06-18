@@ -11,40 +11,57 @@
 			"URL": "https://www.razer.com/"
 		},
 		"ActionMenu": [
-			[ 0, "PlayAnimationName" ],
-			[ 1, "PlayComposite" ],
-			[ 2, "StaticColor" ],
-			[ 3, "StaticColorAllDevices" ],
-			[ 4, "CloseAnimationName" ],
-			[ 5, "GetAnimation" ],
-			[ 6, "DuplicateFirstFrameName" ],
-			[ 7, "DuplicateFramesName" ],
-			[ 8, "MakeBlankFramesName" ],
-			[ 9, "ReduceFramesName" ],
-			[ 10, "InsertDelayName" ],
-			[ 11, "TrimStartFramesName" ],
-			[ 12, "TrimEndFramesName" ],
-			[ 13, "MultiplyTargetColorLerpAllFramesName" ],
-			[ 14, "MultiplyNonZeroTargetColorLerpAllFramesName" ],
-			[ 15, "FillZeroColorAllFramesName" ],
-			[ 16, "OffsetColorsAllFramesName" ],
-			[ 17, "CopyNonZeroTargetAllKeysAllFramesName" ],
-			[ 18, "CopyNonZeroAllKeysAllFramesName" ],
-			[ 19, "ConnectXLua" ]
+			[
+				"Setup",
+				[ 19, "Init" ],
+				[ 20, "Connect to xLua Script" ]
+			],
+			[
+				"Colors",
+				[ 2, "Set Device to RGB" ],
+				[ 3, "Set All Devices to RGB" ],
+				[ 13, "Lerp All Frames Between Two Colors with Frame RGB Data as Input" ],
+				[ 14, "Lerp All Frames Between Two Colors with Frame RGB Data as Input (Ignore Blank RGB Values)" ],
+				[ 15, "Fill All Frames with Color where RGB is Blank" ],
+				[ 16, "Offset All Frames with RGB Offset" ]
+			],
+			[
+				"Animations",
+				[ 5, "Get Animation" ],
+				[ 0, "Play Animation" ],
+				[ 21, "Stop Animation" ],
+				[ 1, "Play Composite" ],
+				[ 4, "Close Animation" ]
+			],
+			[
+				"Timing",
+				[ 6, "Duplicate First Frame" ],
+				[ 7, "Duplicate Frames" ],
+				[ 8, "Make Blank Frames" ],
+				[ 9, "Reduce Frames" ],
+				[ 10, "Insert Delay" ],
+				[ 11, "Trim Start Frames" ],
+				[ 12, "Trim End Frames" ]
+			],
+			[
+				"Layers",
+				[ 18, "Copy All Frames with Source Non-Blank RGB to Target" ],
+				[ 17, "Copy All Frames with Source Non-Blank RGB to Target Non-Blank RGB" ]
+			]		
 		],
 		"ConditionMenu": [
-			[ 0, "Is Initialized?" ],
-			[ 1, "Initialize ChromaSDK?" ]
+			[ 0, "Is Extension Initialized?" ],
+			[ 1, "Initialize Extension?" ]
 		],
 		"ExpressionMenu": [
-			[ 0, "IsInitialized" ],
-			[ 1, "Init" ],
-			[ 2, "GetRGB" ],
-			[ 3, "GetFrameCountName" ]
+			[ 0, "Is Extension Initialized" ],
+			[ 1, "Init Extension" ],
+			[ 2, "Get RGB" ],
+			[ 3, "Get Frame Count" ]
 		],
 		"Actions": [
 			{
-				"Title": "Play Animation Name",
+				"Title": "Play Animation",
 				"Parameters": [
 					[ "Text", "Path" ],
 					[ "Integer", "Loop" ]
@@ -72,7 +89,7 @@
 				]
 			},
 			{
-				"Title": "Close Animation Name",
+				"Title": "Close Animation",
 				"Parameters": [
 					[ "Text", "Path" ]
 				]
@@ -84,20 +101,20 @@
 				]
 			},
 			{
-				"Title": "Duplicate First Frame Name",
+				"Title": "Duplicate First Frame",
 				"Parameters": [
 					[ "Text", "Path" ],
 					[ "Integer", "Frame Count" ]
 				]
 			},
 			{
-				"Title": "Duplicate Frames Name",
+				"Title": "Duplicate Frames",
 				"Parameters": [
 					[ "Text", "Path" ]
 				]
 			},
 			{
-				"Title": "Make Blank Frames Name",
+				"Title": "Make Blank Frames",
 				"Parameters": [
 					[ "Text", "Path" ],
 					[ "Integer", "Frame Count" ],
@@ -106,14 +123,14 @@
 				]
 			},
 			{
-				"Title": "Reduce Frames Name",
+				"Title": "Reduce Frames",
 				"Parameters": [
 					[ "Text", "Path" ],
 					[ "Integer", "N" ]
 				]
 			},
 			{
-				"Title": "Insert Delay Name",
+				"Title": "Insert Delay",
 				"Parameters": [
 					[ "Text", "Path" ],
 					[ "Integer", "Frame Id" ],
@@ -121,21 +138,21 @@
 				]
 			},
 			{
-				"Title": "Trim Start Frames Name",
+				"Title": "Trim Start Frames",
 				"Parameters": [
 					[ "Text", "Path" ],
 					[ "Integer", "Number of Frames" ]
 				]
 			},
 			{
-				"Title": "Trim End Frames Name",
+				"Title": "Trim End Frames",
 				"Parameters": [
 					[ "Text", "Path" ],
 					[ "Integer", "Last Frame Id" ]
 				]
 			},
 			{
-				"Title": "Multiply Target Color Lerp All Frames Name",
+				"Title": "Multiply Target Color Lerp All Frames",
 				"Parameters": [
 					[ "Text", "Path" ],
 					[ "Integer", "Color 1" ],
@@ -143,7 +160,7 @@
 				]
 			},
 			{
-				"Title": "Multiply NonZero Target Color Lerp All Frames Name",
+				"Title": "Multiply NonZero Target Color Lerp All Frames",
 				"Parameters": [
 					[ "Text", "Path" ],
 					[ "Integer", "Color 1" ],
@@ -151,14 +168,14 @@
 				]
 			},
 			{
-				"Title": "Fill Zero Color All Frames Name",
+				"Title": "Fill Zero Color All Frames",
 				"Parameters": [
 					[ "Text", "Path" ],
 					[ "Integer", "Color" ]
 				]
 			},
 			{
-				"Title": "Offset Colors All Frames Name",
+				"Title": "Offset Colors All Frames",
 				"Parameters": [
 					[ "Text", "Path" ],
 					[ "Integer", "Red" ],
@@ -167,18 +184,21 @@
 				]
 			},
 			{
-				"Title": "Copy Non Zero Target All Keys All Frames Name",
+				"Title": "Copy Non Zero Target All Keys All Frames",
 				"Parameters": [
 					[ "Text", "Source Animation Path" ],
 					[ "Text", "Target Animation Path" ]
 				]
 			},
 			{
-				"Title": "Copy Non Zero All Keys All Frames Name",
+				"Title": "Copy Non Zero All Keys All Frames",
 				"Parameters": [
 					[ "Text", "Source Animation Path" ],
 					[ "Text", "Target Animation Path" ]
 				]
+			},
+			{
+				"Title": "Init"
 			},
 			{
 				"Title": "Connect to xLua Script",

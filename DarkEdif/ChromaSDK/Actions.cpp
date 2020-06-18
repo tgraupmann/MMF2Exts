@@ -5,6 +5,11 @@
 using namespace ChromaSDK;
 using namespace std;
 
+void Extension::ActInit()
+{
+	CondInit();
+}
+
 void Extension::PlayAnimationName(const TCHAR* path, int loop)
 {
 	/*
@@ -22,6 +27,18 @@ void Extension::PlayAnimationName(const TCHAR* path, int loop)
 		const char* cPath = sPath.c_str();
 
 		ChromaAnimationAPI::PlayAnimationName(cPath, loop == 1);
+	}
+}
+
+void Extension::StopAnimationName(const TCHAR* path)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+
+		ChromaAnimationAPI::StopAnimationName(cPath);
 	}
 }
 

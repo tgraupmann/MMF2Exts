@@ -55,7 +55,10 @@ public:
 
 	/// Actions
 
+		void ActInit();
+
 		void PlayAnimationName(const TCHAR* path, int loop);
+		void StopAnimationName(const TCHAR* path);
 
 		void PlayComposite(const TCHAR* name, int loop);
 
