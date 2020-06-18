@@ -57,6 +57,12 @@ public:
 
 		void PlayAnimationName(const TCHAR* path, int loop);
 
+		void PlayComposite(const TCHAR* name, int loop);
+
+		void StaticColor(int deviceType, int device, int color);
+
+		void ConnectXLua(ParamExtension* xLua);
+
 	/// Conditions
 
 		bool CondIsInitialized();
@@ -66,6 +72,8 @@ public:
 		
 		int ExpIsInitialized();
 		int ExpInit();
+
+		int ExpGetRGB(int red, int green, int blue);
 
 
 

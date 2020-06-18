@@ -38,6 +38,7 @@ static std::unordered_map<Params, std::tstring> actionAndConditionParamTypes
 	{ /* 40 */ Params::Filename, _T("filename") },
 	{ /* 41 */ Params::String, _T("string") },
 	{ /* 45 */ Params::String_Expression, _T("string") },
+	{ /* 55 */ Params::Extension, _T("extension") },
 	{ /* 63 */ Params::Filename_2, _T("filename") }
 };
 

@@ -42,6 +42,9 @@ Params ReadParameterType(const char * Text, bool &IsFloat)
 	if (!_stricmp(Text, "Object"))
 		return Params::Object;
 
+	if (!_stricmp(Text, "Extension"))
+		return Params::Extension;
+
 	if (!_stricmp(Text, "Position"))
 		return Params::Position;
 

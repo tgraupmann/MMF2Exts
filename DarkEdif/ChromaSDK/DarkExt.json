@@ -11,7 +11,10 @@
 			"URL": "https://www.razer.com/"
 		},
 		"ActionMenu": [
-			[ 0, "PlayAnimationName" ]
+			[ 0, "PlayAnimationName" ],
+			[ 1, "PlayComposite" ],
+			[ 2, "StaticColor" ],
+			[ 3, "ConnectXLua" ]
 		],
 		"ConditionMenu": [
 			[ 0, "Is Initialized?" ],
@@ -19,7 +22,8 @@
 		],
 		"ExpressionMenu": [
 			[ 0, "IsInitialized" ],
-			[ 1, "Init" ]
+			[ 1, "Init" ],
+			[ 2, "GetRGB" ]
 		],
 		"Actions": [
 			{
@@ -28,7 +32,28 @@
 					[ "Text", "Path" ],
 					[ "Integer", "Loop" ]
 				]
-			}			
+			},
+			{
+				"Title": "Play Composite",
+				"Parameters": [
+					[ "Text", "Name" ],
+					[ "Integer", "Loop" ]
+				]
+			},
+			{
+				"Title": "Static Color",
+				"Parameters": [
+					[ "Integer", "DeviceType" ],
+					[ "Integer", "Device" ],
+					[ "Integer", "Color" ]
+				]
+			},
+			{
+				"Title": "Connect to xLua Script",
+				"Parameters": [
+					[ "Extension", "xLua" ]
+				]
+			}
 		],
 		"Conditions": [
 			{
@@ -51,6 +76,15 @@
 			},
 			{
 				"Title": "Init(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "GetRGB(",
+				"Parameters": [
+					[ "Integer", "Red" ],
+					[ "Integer", "Green" ],
+					[ "Integer", "Blue" ]
+				],
 				"Returns": "Integer"
 			}
 		],

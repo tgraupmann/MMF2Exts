@@ -13,3 +13,15 @@ int Extension::ExpInit()
 {
 	return CondInit();
 }
+
+int Extension::ExpGetRGB(int red, int green, int blue)
+{
+	if (CondIsInitialized())
+	{
+		ChromaAnimationAPI::GetRGB(red, green, blue);
+	}
+	else
+	{
+		return 0;
+	}
+}
