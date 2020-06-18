@@ -62,6 +62,26 @@ public:
 		void StaticColor(int deviceType, int device, int color);
 		void StaticColorAllDevices(int color);
 
+		void CloseAnimationName(const TCHAR* path);
+		void GetAnimation(const TCHAR* path);
+
+		void DuplicateFirstFrameName(const TCHAR* path, int frameCount);
+		void DuplicateFramesName(const TCHAR* path);
+		void MakeBlankFramesName(const TCHAR* path, int frameCount, float duration, int color);
+		void ReduceFramesName(const TCHAR* path, int n);
+		void InsertDelayName(const TCHAR* path, int frameId, int delay);
+		void TrimStartFramesName(const TCHAR* path, int numberOfFrames);
+		void TrimEndFramesName(const TCHAR* path, int lastFrameId);
+
+		void MultiplyTargetColorLerpAllFramesName(const TCHAR* path, int color1, int color2);
+		void MultiplyNonZeroTargetColorLerpAllFramesName(const TCHAR* path, int color1, int color2);
+
+		void FillZeroColorAllFramesName(const TCHAR* path, int color);
+		void OffsetColorsAllFramesName(const TCHAR* path, int red, int green, int blue);
+
+		void CopyNonZeroTargetAllKeysAllFramesName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation);
+		void CopyNonZeroAllKeysAllFramesName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation);
+
 		void ConnectXLua(ParamExtension* xLua);
 
 	/// Conditions
@@ -78,6 +98,8 @@ public:
 
 		int ExpGetIntDeviceType(const TCHAR* name);
 		int ExpGetIntDevice(const TCHAR* name);
+
+		int ExpGetFrameCountName(const TCHAR* path);
 
 
 

@@ -35,6 +35,21 @@ Extension::Extension(RUNDATA * _rdPtr, EDITDATA * edPtr, CreateObjectInfo * cobP
 	LinkAction(actionIndex++, PlayComposite);
 	LinkAction(actionIndex++, StaticColor);
 	LinkAction(actionIndex++, StaticColorAllDevices);
+	LinkAction(actionIndex++, CloseAnimationName);
+	LinkAction(actionIndex++, GetAnimation);
+	LinkAction(actionIndex++, DuplicateFirstFrameName);
+	LinkAction(actionIndex++, DuplicateFramesName);
+	LinkAction(actionIndex++, MakeBlankFramesName);
+	LinkAction(actionIndex++, ReduceFramesName);
+	LinkAction(actionIndex++, InsertDelayName);
+	LinkAction(actionIndex++, TrimStartFramesName);
+	LinkAction(actionIndex++, TrimEndFramesName);
+	LinkAction(actionIndex++, MultiplyTargetColorLerpAllFramesName);
+	LinkAction(actionIndex++, MultiplyNonZeroTargetColorLerpAllFramesName);
+	LinkAction(actionIndex++, FillZeroColorAllFramesName);
+	LinkAction(actionIndex++, OffsetColorsAllFramesName);
+	LinkAction(actionIndex++, CopyNonZeroTargetAllKeysAllFramesName);
+	LinkAction(actionIndex++, CopyNonZeroAllKeysAllFramesName);
 	LinkAction(actionIndex++, ConnectXLua);
 
 	unsigned int conditionIndex = 0;
@@ -47,6 +62,7 @@ Extension::Extension(RUNDATA * _rdPtr, EDITDATA * edPtr, CreateObjectInfo * cobP
 	LinkExpression(expressionIndex++, ExpGetRGB);
 	LinkExpression(expressionIndex++, ExpGetIntDeviceType);
 	LinkExpression(expressionIndex++, ExpGetIntDevice);
+	LinkExpression(expressionIndex++, ExpGetFrameCountName);
 
 	/*
 		This is where you'd do anything you'd do in CreateRunObject in the original SDK

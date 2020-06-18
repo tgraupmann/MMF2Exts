@@ -1,7 +1,9 @@
 #include "Common.h"
 #include "Public/ChromaAnimationAPI.h"
+#include <string>
 
 using namespace ChromaSDK;
+using namespace std;
 
 
 int Extension::ExpIsInitialized()
@@ -82,4 +84,20 @@ int Extension::ExpGetIntDevice(const TCHAR* name)
 		return 2;
 	}
 	return -1;
+}
+
+int Extension::ExpGetFrameCountName(const TCHAR* path)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+
+		return ChromaAnimationAPI::GetFrameCountName(cPath);
+	}
+	else
+	{
+		return 0;
+	}
 }

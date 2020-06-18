@@ -15,7 +15,22 @@
 			[ 1, "PlayComposite" ],
 			[ 2, "StaticColor" ],
 			[ 3, "StaticColorAllDevices" ],
-			[ 4, "ConnectXLua" ]
+			[ 4, "CloseAnimationName" ],
+			[ 5, "GetAnimation" ],
+			[ 6, "DuplicateFirstFrameName" ],
+			[ 7, "DuplicateFramesName" ],
+			[ 8, "MakeBlankFramesName" ],
+			[ 9, "ReduceFramesName" ],
+			[ 10, "InsertDelayName" ],
+			[ 11, "TrimStartFramesName" ],
+			[ 12, "TrimEndFramesName" ],
+			[ 13, "MultiplyTargetColorLerpAllFramesName" ],
+			[ 14, "MultiplyNonZeroTargetColorLerpAllFramesName" ],
+			[ 15, "FillZeroColorAllFramesName" ],
+			[ 16, "OffsetColorsAllFramesName" ],
+			[ 17, "CopyNonZeroTargetAllKeysAllFramesName" ],
+			[ 18, "CopyNonZeroAllKeysAllFramesName" ],
+			[ 19, "ConnectXLua" ]
 		],
 		"ConditionMenu": [
 			[ 0, "Is Initialized?" ],
@@ -24,7 +39,8 @@
 		"ExpressionMenu": [
 			[ 0, "IsInitialized" ],
 			[ 1, "Init" ],
-			[ 2, "GetRGB" ]
+			[ 2, "GetRGB" ],
+			[ 3, "GetFrameCountName" ]
 		],
 		"Actions": [
 			{
@@ -53,6 +69,115 @@
 				"Title": "Static Color All Devices",
 				"Parameters": [
 					[ "Integer", "Color" ]
+				]
+			},
+			{
+				"Title": "Close Animation Name",
+				"Parameters": [
+					[ "Text", "Path" ]
+				]
+			},
+			{
+				"Title": "Get Animation",
+				"Parameters": [
+					[ "Text", "Path" ]
+				]
+			},
+			{
+				"Title": "Duplicate First Frame Name",
+				"Parameters": [
+					[ "Text", "Path" ],
+					[ "Integer", "Frame Count" ]
+				]
+			},
+			{
+				"Title": "Duplicate Frames Name",
+				"Parameters": [
+					[ "Text", "Path" ]
+				]
+			},
+			{
+				"Title": "Make Blank Frames Name",
+				"Parameters": [
+					[ "Text", "Path" ],
+					[ "Integer", "Frame Count" ],
+					[ "Float", "Duration" ],
+					[ "Integer", "Color" ]
+				]
+			},
+			{
+				"Title": "Reduce Frames Name",
+				"Parameters": [
+					[ "Text", "Path" ],
+					[ "Integer", "N" ]
+				]
+			},
+			{
+				"Title": "Insert Delay Name",
+				"Parameters": [
+					[ "Text", "Path" ],
+					[ "Integer", "Frame Id" ],
+					[ "Integer", "Delay" ]
+				]
+			},
+			{
+				"Title": "Trim Start Frames Name",
+				"Parameters": [
+					[ "Text", "Path" ],
+					[ "Integer", "Number of Frames" ]
+				]
+			},
+			{
+				"Title": "Trim End Frames Name",
+				"Parameters": [
+					[ "Text", "Path" ],
+					[ "Integer", "Last Frame Id" ]
+				]
+			},
+			{
+				"Title": "Multiply Target Color Lerp All Frames Name",
+				"Parameters": [
+					[ "Text", "Path" ],
+					[ "Integer", "Color 1" ],
+					[ "Integer", "Color 2" ]
+				]
+			},
+			{
+				"Title": "Multiply NonZero Target Color Lerp All Frames Name",
+				"Parameters": [
+					[ "Text", "Path" ],
+					[ "Integer", "Color 1" ],
+					[ "Integer", "Color 2" ]
+				]
+			},
+			{
+				"Title": "Fill Zero Color All Frames Name",
+				"Parameters": [
+					[ "Text", "Path" ],
+					[ "Integer", "Color" ]
+				]
+			},
+			{
+				"Title": "Offset Colors All Frames Name",
+				"Parameters": [
+					[ "Text", "Path" ],
+					[ "Integer", "Red" ],
+					[ "Integer", "Green" ],
+					[ "Integer", "Blue" ]
+				]
+			},
+			{
+				"Title": "Copy Non Zero Target All Keys All Frames Name",
+				"Parameters": [
+					[ "Text", "Source Animation Path" ],
+					[ "Text", "Target Animation Path" ]
+				]
+			},
+			{
+				"Title": "Copy Non Zero All Keys All Frames Name",
+				"Parameters": [
+					[ "Text", "Source Animation Path" ],
+					[ "Text", "Target Animation Path" ]
 				]
 			},
 			{
@@ -102,9 +227,16 @@
 				"Returns": "Integer"
 			},
 			{
-				"Title": "ExpGetIntDevice(",
+				"Title": "GetIntDevice(",
 				"Parameters": [
 					[ "Text", "Name" ]
+				],
+				"Returns": "Integer"
+			},
+			{
+				"Title": "GetFrameCountName(",
+				"Parameters": [
+					[ "Text", "Path" ]
 				],
 				"Returns": "Integer"
 			}

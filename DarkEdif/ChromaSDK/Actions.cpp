@@ -55,6 +55,182 @@ void Extension::StaticColorAllDevices(int color)
 	StaticColor(ExpGetIntDeviceType(_T("Mousepad")), ExpGetIntDevice(_T("Mousepad")), color);
 }
 
+void Extension::CloseAnimationName(const TCHAR* path)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::CloseAnimationName(cPath);
+	}
+}
+
+void Extension::GetAnimation(const TCHAR* path)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::GetAnimation(cPath);
+	}
+}
+
+void Extension::DuplicateFirstFrameName(const TCHAR* path, int frameCount)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::DuplicateFirstFrameName(cPath, frameCount);
+	}
+}
+
+void Extension::DuplicateFramesName(const TCHAR* path)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::DuplicateFramesName(cPath);
+	}
+}
+
+void Extension::MakeBlankFramesName(const TCHAR* path, int frameCount, float duration, int color)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::MakeBlankFramesName(cPath, frameCount, duration, color);
+	}
+}
+
+void Extension::ReduceFramesName(const TCHAR* path, int n)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::ReduceFramesName(cPath, n);
+	}
+}
+
+void Extension::InsertDelayName(const TCHAR* path, int frameId, int delay)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::InsertDelayName(cPath, frameId, delay);
+	}
+}
+
+void Extension::TrimStartFramesName(const TCHAR* path, int numberOfFrames)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::TrimStartFramesName(cPath, numberOfFrames);
+	}
+}
+
+void Extension::TrimEndFramesName(const TCHAR* path, int lastFrameId)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::TrimEndFramesName(cPath, lastFrameId);
+	}
+}
+
+void Extension::MultiplyTargetColorLerpAllFramesName(const TCHAR* path, int color1, int color2)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::MultiplyTargetColorLerpAllFramesName(cPath, color1, color2);
+	}
+}
+
+void Extension::MultiplyNonZeroTargetColorLerpAllFramesName(const TCHAR* path, int color1, int color2)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::MultiplyNonZeroTargetColorLerpAllFramesName(cPath, color1, color2);
+	}
+}
+
+
+void Extension::FillZeroColorAllFramesName(const TCHAR* path, int color)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::FillZeroColorAllFramesName(cPath, color);
+	}
+}
+
+void Extension::OffsetColorsAllFramesName(const TCHAR* path, int red, int green, int blue)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::OffsetColorsAllFramesName(cPath, red, green, blue);
+	}
+}
+
+void Extension::CopyNonZeroTargetAllKeysAllFramesName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsSource(sourceAnimation);
+		string sSource(bsSource.begin(), bsSource.end());
+		const char* cSource = sSource.c_str();
+
+		basic_string<TCHAR> bsTarget(targetAnimation);
+		string sTarget(bsTarget.begin(), bsTarget.end());
+		const char* cTarget = sTarget.c_str();
+
+		ChromaAnimationAPI::CopyNonZeroTargetAllKeysAllFramesName(cSource, cTarget);
+	}
+}
+
+void Extension::CopyNonZeroAllKeysAllFramesName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsSource(sourceAnimation);
+		string sSource(bsSource.begin(), bsSource.end());
+		const char* cSource = sSource.c_str();
+
+		basic_string<TCHAR> bsTarget(targetAnimation);
+		string sTarget(bsTarget.begin(), bsTarget.end());
+		const char* cTarget = sTarget.c_str();
+
+		ChromaAnimationAPI::CopyNonZeroAllKeysAllFramesName(cSource, cTarget);
+	}
+}
+
 void Extension::ConnectXLua(ParamExtension* xLua)
 {
 	if (xLua)
