@@ -34,6 +34,7 @@ Extension::Extension(RUNDATA * _rdPtr, EDITDATA * edPtr, CreateObjectInfo * cobP
 	LinkAction(actionIndex++, PlayAnimationName);
 	LinkAction(actionIndex++, PlayComposite);
 	LinkAction(actionIndex++, StaticColor);
+	LinkAction(actionIndex++, StaticColorAllDevices);
 	LinkAction(actionIndex++, ConnectXLua);
 
 	unsigned int conditionIndex = 0;
@@ -44,6 +45,8 @@ Extension::Extension(RUNDATA * _rdPtr, EDITDATA * edPtr, CreateObjectInfo * cobP
 	LinkExpression(expressionIndex++, ExpIsInitialized);
 	LinkExpression(expressionIndex++, ExpInit);
 	LinkExpression(expressionIndex++, ExpGetRGB);
+	LinkExpression(expressionIndex++, ExpGetIntDeviceType);
+	LinkExpression(expressionIndex++, ExpGetIntDevice);
 
 	/*
 		This is where you'd do anything you'd do in CreateRunObject in the original SDK

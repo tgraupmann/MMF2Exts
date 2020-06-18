@@ -14,7 +14,8 @@
 			[ 0, "PlayAnimationName" ],
 			[ 1, "PlayComposite" ],
 			[ 2, "StaticColor" ],
-			[ 3, "ConnectXLua" ]
+			[ 3, "StaticColorAllDevices" ],
+			[ 4, "ConnectXLua" ]
 		],
 		"ConditionMenu": [
 			[ 0, "Is Initialized?" ],
@@ -45,6 +46,12 @@
 				"Parameters": [
 					[ "Integer", "DeviceType" ],
 					[ "Integer", "Device" ],
+					[ "Integer", "Color" ]
+				]
+			},
+			{
+				"Title": "Static Color All Devices",
+				"Parameters": [
 					[ "Integer", "Color" ]
 				]
 			},
@@ -84,6 +91,20 @@
 					[ "Integer", "Red" ],
 					[ "Integer", "Green" ],
 					[ "Integer", "Blue" ]
+				],
+				"Returns": "Integer"
+			},
+			{
+				"Title": "GetIntDeviceType(",
+				"Parameters": [
+					[ "Text", "Name" ]
+				],
+				"Returns": "Integer"
+			},
+			{
+				"Title": "ExpGetIntDevice(",
+				"Parameters": [
+					[ "Text", "Name" ]
 				],
 				"Returns": "Integer"
 			}

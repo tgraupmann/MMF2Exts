@@ -60,6 +60,7 @@ public:
 		void PlayComposite(const TCHAR* name, int loop);
 
 		void StaticColor(int deviceType, int device, int color);
+		void StaticColorAllDevices(int color);
 
 		void ConnectXLua(ParamExtension* xLua);
 
@@ -74,6 +75,9 @@ public:
 		int ExpInit();
 
 		int ExpGetRGB(int red, int green, int blue);
+
+		int ExpGetIntDeviceType(const TCHAR* name);
+		int ExpGetIntDevice(const TCHAR* name);
 
 
 
