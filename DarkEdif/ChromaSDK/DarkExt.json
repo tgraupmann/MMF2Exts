@@ -11,35 +11,17 @@
 			"URL": "https://www.razer.com/"
 		},
 		"ActionMenu": [
-			[ 0, "Action Example" ],
-			"---",
-			[
-				"Sub Menu",
-				[ 1, "Second Action Example" ]
-			],
-			[ 2, "PlayAnimationName" ]
+			[ 0, "PlayAnimationName" ]
 		],
 		"ConditionMenu": [
-			[ 0, "Are two numbers equal?" ],
-			[ 1, "Is Initialized?" ],
-			[ 2, "Initialize ChromaSDK?" ]
+			[ 0, "Is Initialized?" ],
+			[ 1, "Initialize ChromaSDK?" ]
 		],
 		"ExpressionMenu": [
-			[ 0, "Add two numbers" ],
-			[ 1, "Hello world" ],
-			[ 2, "IsInitialized" ],
-			[ 3, "Init" ]
+			[ 0, "IsInitialized" ],
+			[ 1, "Init" ]
 		],
 		"Actions": [
-			{
-				"Title": "Action Example with parameter %0",
-				"Parameters": [
-					[ "Integer", "Example Parameter" ]
-				]
-			},
-			{
-				"Title": "Second Action Example"
-			},
 			{
 				"Title": "Play Animation Name",
 				"Parameters": [
@@ -49,14 +31,6 @@
 			}			
 		],
 		"Conditions": [
-			{
-				"Title": "%o : Are %0 and %1 equal?",
-				"Triggered": false,
-				"Parameters": [
-					[ "Integer", "First number" ],
-					[ "Integer", "Second number" ]
-				]
-			},
 			{
 				"Title": "Is ChromaSDK Initialized?",
 				"Triggered": false,
@@ -72,18 +46,6 @@
 		],
 		"Expressions": [
 			{
-				"Title": "Add(",
-				"Returns": "Integer",
-				"Parameters": [
-					[ "Integer", "First number" ],
-					[ "Integer", "Second number" ]
-				]
-			},
-			{
-				"Title": "HelloWorld$(",
-				"Returns": "Text"
-			},
-			{
 				"Title": "IsInitialized(",
 				"Returns": "Integer"
 			},
@@ -93,78 +55,6 @@
 			}
 		],
 		"Properties": [
-			{
-				"Title": "Folder of props",
-				"Info": "Folder information",
-				"Type": "Folder"
-			},
-				{
-					"Title": "Checkbox within folder",
-					"Info": "yeah, it should be bold.",
-					"Type": "Checkbox",
-					"DefaultState": true, // or false
-					"Bold": true
-				},
-			{
-				"Type": "FolderEnd"
-			},
-			{
-				"Title": "Static text 1",
-				"Info": "Blank text",
-				"Type": "Text",
-				"DefaultState": "Static text, default state. Or default text."
-			},
-			{
-				"Title": "Static text 2",
-				"Info": "Blank text, bold'd",
-				"Type": "Text",
-				"DefaultState": "Bolded static text.",
-				"Bold": true
-			},
-			{	
-				"Title": "Editable 3",
-				"Info": "yeah, it shouldn't be bold.",
-				"Type": "Edit button",
-				"DefaultState": "Bolded static text.",
-				"Text": "Button"
-			},
-			{
-				"Title": "Editable 4",
-				"Info": "yeah, it are very bold.",
-				"Type": "Edit button",
-				"DefaultState": "Verah Boldz Edit Butt.",
-				"Bold": true
-			},
-			{
-				"Title": "Editable 5",
-				"Info": "yeah, it are very bold.",
-				"DefaultState": "Verah Boldz Edit Strng.",
-				"Type": "Editbox String",
-				"Bold": true
-			},
-			{
-				"Title": "Editable 6",
-				"Info": "This one should force uppercase.",
-				"Type": "Editbox String",
-				"DefaultState": "Non Bolz Edit Strng Upperz!",
-				"Case": "Upper"
-			},
-			{
-				"Title": "Editable 7",
-				"Info": "This one should be limited to 25 characters.",
-				"Type": "Editbox String",
-				"DefaultState": "Non Bolz Edit Strng Loalwas!",
-				"Case": "Lower",
-				"MaxLength": 25
-			},
-			{
-				"Title": "Editable 8",
-				"Info": "yeah, limited between 25 and 20",
-				"Type": "Editbox Number",
-				"DefaultState": 21,
-				"Maximum": 25,
-				"Minimum": 20
-			}
 		]
 	}
 }

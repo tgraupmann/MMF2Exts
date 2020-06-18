@@ -1,2 +1,2 @@
-CD "..\..\\MFX\Extensions"
+CD "..\..\MFX\Extensions\Unicode"
 START .

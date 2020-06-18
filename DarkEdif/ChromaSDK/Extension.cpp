@@ -31,18 +31,13 @@ Extension::Extension(RUNDATA * _rdPtr, EDITDATA * edPtr, CreateObjectInfo * cobP
 	*/
 
 	unsigned int actionIndex = 0;
-	LinkAction(actionIndex++, ActionExample);
-	LinkAction(actionIndex++, SecondActionExample);
 	LinkAction(actionIndex++, PlayAnimationName);
 
 	unsigned int conditionIndex = 0;
-	LinkCondition(conditionIndex++, AreTwoNumbersEqual);
 	LinkCondition(conditionIndex++, CondIsInitialized);
 	LinkCondition(conditionIndex++, CondInit);
 
 	unsigned int expressionIndex = 0;
-	LinkExpression(expressionIndex++, Add);
-	LinkExpression(expressionIndex++, HelloWorld);
 	LinkExpression(expressionIndex++, ExpIsInitialized);
 	LinkExpression(expressionIndex++, ExpInit);
 

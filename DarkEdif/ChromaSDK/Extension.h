@@ -55,23 +55,15 @@ public:
 
 	/// Actions
 
-		void ActionExample(int ExampleParameter);
-		void SecondActionExample();
-
 		void PlayAnimationName(const TCHAR* path, int loop);
 
 	/// Conditions
-
-		bool AreTwoNumbersEqual(int FirstNumber, int SecondNumber);
 
 		bool CondIsInitialized();
 		bool CondInit();
 
 	/// Expressions
 		
-		int Add(int FirstNumber, int SecondNumber);
-		const TCHAR * HelloWorld();
-
 		int ExpIsInitialized();
 		int ExpInit();
 

@@ -5,14 +5,6 @@
 using namespace ChromaSDK;
 using namespace std;
 
-void Extension::ActionExample(int ExampleParameter)
-{
-}
-
-void Extension::SecondActionExample()
-{
-}
-
 void Extension::PlayAnimationName(const TCHAR* path, int loop)
 {
 	/*
