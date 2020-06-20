@@ -108,9 +108,9 @@
 #include	"evtccx.h"
 #include	"Props.h"
 #else
-#include	"..\dll\cnpdll.h"
-#include	"..\runtime\cncr.h"
-#include	"..\events\evtccx.h"
+#include	"cnpdll.h"
+#include	"cncr.h"
+#include	"evtccx.h"
 #include	"inc\props.h"
 #endif
 

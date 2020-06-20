@@ -1,8 +1,13 @@
 #include "Common.h"
 #include "Public/ChromaAnimationAPI.h"
 
-using namespace ChromaSDK;
+#if _UNICODE
+#pragma message("Building the UNICODE vesion of the ChromaSDK extension")
+#else
+#pragma message("Building the NON_UNICODE vesion of the ChromaSDK extension")
+#endif
 
+using namespace ChromaSDK;
 
 ///
 /// EXTENSION CONSTRUCTOR/DESTRUCTOR
@@ -177,5 +182,3 @@ long Extension::Expression(int ID, RUNDATA * rdPtr, long param)
 {
 	return 0;
 }
-
-

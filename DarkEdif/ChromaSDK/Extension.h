@@ -2,6 +2,13 @@
 #include "Public/RzChromaSDKTypes.h"
 #include "Public/RzErrors.h"
 
+
+namespace lua
+{
+	typedef struct lua_State lua_State;
+}
+
+
 class Extension
 {
 public:
@@ -85,7 +92,9 @@ public:
 		void CopyNonZeroTargetAllKeysAllFramesName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation);
 		void CopyNonZeroAllKeysAllFramesName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation);
 
-		void ConnectXLua(ParamExtension* xLua);
+		void ConnectXLua();
+
+		static int LuaPlayAnimationName(lua::lua_State* state);
 
 	/// Conditions
 

@@ -20,7 +20,7 @@ int Extension::ExpGetRGB(int red, int green, int blue)
 {
 	if (CondIsInitialized())
 	{
-		ChromaAnimationAPI::GetRGB(red, green, blue);
+		return ChromaAnimationAPI::GetRGB(red, green, blue);
 	}
 	else
 	{

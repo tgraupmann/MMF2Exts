@@ -14,7 +14,7 @@
 			[
 				"Setup",
 				[ 19, "Initialize Extension" ],
-				[ 20, "Connect to xLua Script" ]
+				[ 20, "Connect to Lua States" ]
 			],
 			[
 				"Colors",
@@ -201,9 +201,12 @@
 				"Title": "Initialize Extension"
 			},
 			{
-				"Title": "Connect to xLua Script",
+				"Title": "Connect to Lua States"
+			},
+			{
+				"Title": "Stop Animation",
 				"Parameters": [
-					[ "Extension", "xLua" ]
+					[ "Text", "Path" ]
 				]
 			}
 		],

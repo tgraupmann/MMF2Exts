@@ -1,6 +1,19 @@
+//#define USE_X_LUA true
+
 #include "Common.h"
 #include "Public/ChromaAnimationAPI.h"
 #include <string>
+
+#ifdef USE_X_LUA
+#define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS
+#include <hash_map>
+namespace lua
+{
+	#include "lua.hpp"
+	#include "XLuaGlobal.h"
+	#include "XLuaState.h"
+}
+#endif
 
 using namespace ChromaSDK;
 using namespace std;
@@ -248,10 +261,43 @@ void Extension::CopyNonZeroAllKeysAllFramesName(const TCHAR* sourceAnimation, co
 	}
 }
 
-void Extension::ConnectXLua(ParamExtension* xLua)
+void Extension::ConnectXLua()
 {
-	if (xLua)
+#ifdef USE_X_LUA
+	stdext::hash_map<int, lua::XLuaState*>& stateTable = lua::XLuaGlobal::Get()._stateTable;
+	for (stdext::hash_map<int, lua::XLuaState*>::iterator iter = stateTable.begin(); iter != stateTable.end(); ++iter)
 	{
+		lua::XLuaState* xState = iter->second;
+		if (xState != NULL)
+		{
+			lua::lua_State* lState = xState->state;
+			if (lState)
+			{
+				lua::lua_getglobal(lState, "mmf");
 
+				lua::lua_pushcfunction(lState, Extension::LuaPlayAnimationName);
+				lua::lua_setfield(lState, 2, "playAnimationName");
+
+				lua::lua_pop(lState, 1);
+			}
+		}
 	}
+#endif
 }
+
+int Extension::LuaPlayAnimationName(lua::lua_State* state)
+{
+#ifdef USE_X_LUA
+	if (state)
+	{
+		OutputDebugStringA("LuaPlayAnimationName: State is valid!");
+		return 0;
+	}
+#endif
+	OutputDebugStringA("LuaPlayAnimationName: State is not valid!");
+	return -1;
+}
+
+#ifdef USE_X_LUA
+#pragma comment(lib, "xlua.lib")
+#endif

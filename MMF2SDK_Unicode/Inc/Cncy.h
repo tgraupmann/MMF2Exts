@@ -1324,6 +1324,8 @@ typedef mv *LPMV;
 #define mvOpenHFile		mvOpenHFileA
 #endif
 
+#undef EF_ISHWA
+
 // Callback function identifiers for mvCallFunction
 enum {
 	// Editor only
