@@ -13,8 +13,12 @@
 		"ActionMenu": [
 			[
 				"Setup",
-				[ 19, "Initialize Extension" ],
-				[ 20, "Connect to Lua States" ]
+				[ 19, "Initialize Extension" ]
+			],
+			[
+				"Lua",
+				[ 20, "Connect to Lua States" ],
+				[ 22, "Execute Lua Function" ]
 			],
 			[
 				"Colors",
@@ -47,7 +51,7 @@
 				"Layers",
 				[ 18, "Copy All Frames with Source Non-Blank RGB to Target" ],
 				[ 17, "Copy All Frames with Source Non-Blank RGB to Target Non-Blank RGB" ]
-			]		
+			]
 		],
 		"ConditionMenu": [
 			[ 0, "Is Extension Initialized?" ],
@@ -207,6 +211,12 @@
 				"Title": "Stop Animation",
 				"Parameters": [
 					[ "Text", "Path" ]
+				]
+			},
+			{
+				"Title": "Execute Lua Function",
+				"Parameters": [
+					[ "Text", "Name" ]
 				]
 			}
 		],

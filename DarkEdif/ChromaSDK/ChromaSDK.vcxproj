@@ -118,6 +118,7 @@
     <ClCompile Include="Private\ChromaSDKPluginTypes.cpp" />
     <ClCompile Include="Runtime.cpp" />
     <ClCompile Include="WrapperXLuaGlobal.cpp" />
+    <ClCompile Include="WrapperXLuaState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DarkExt.json" />
@@ -138,6 +139,7 @@
     <ClInclude Include="Public\RzErrors.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="WrapperXLuaGlobal.h" />
+    <ClInclude Include="WrapperXLuaState.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Ext.rc" />

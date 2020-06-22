@@ -96,6 +96,8 @@ public:
 
 		static int LuaPlayAnimationName(lua::lua_State* state);
 
+		void ActExecuteLua(const TCHAR* source);
+
 	/// Conditions
 
 		bool CondIsInitialized();

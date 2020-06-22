@@ -52,6 +52,9 @@
     <ClCompile Include="WrapperXLuaGlobal.cpp">
       <Filter>LuaWrapper</Filter>
     </ClCompile>
+    <ClCompile Include="WrapperXLuaState.cpp">
+      <Filter>LuaWrapper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Extension.h">
@@ -94,6 +97,9 @@
       <Filter>Razer\Public</Filter>
     </ClInclude>
     <ClInclude Include="WrapperXLuaGlobal.h">
+      <Filter>LuaWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="WrapperXLuaState.h">
       <Filter>LuaWrapper</Filter>
     </ClInclude>
   </ItemGroup>

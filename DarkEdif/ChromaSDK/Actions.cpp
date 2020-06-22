@@ -3,6 +3,7 @@
 #include "Common.h"
 #include "Public/ChromaAnimationAPI.h"
 #include "WrapperXLuaGlobal.h"
+#include "WrapperXLuaState.h"
 #include <string>
 
 #if _UNICODE
@@ -17,7 +18,6 @@
 namespace lua
 {
 	#include "lua.hpp"
-	#include "XLuaGlobal.h"
 	#include "XLuaState.h"
 }
 #endif
@@ -304,16 +304,17 @@ void Extension::ConnectXLua()
 		lua::lua_State* lState = xState->state;
 		if (lState)
 		{
-			// we are able to call inlined methods in the headers for objects in the lua namespace
-			lua::lua_getglobal(lState, "mmf");
-
 			lua::lua_pushcfunction(lState, Extension::LuaPlayAnimationName);
-			lua::lua_setfield(lState, 2, "playAnimationName");
-
-			lua::lua_pop(lState, 1);
+			lua::lua_setglobal(lState, "PlayAnimationName");
 		}
+		WrapperXLuaState::LoadFile(xState, "Sample.lua");
 	}
 #endif
+}
+
+void Extension::ActExecuteLua(const TCHAR* source)
+{
+
 }
 
 int Extension::LuaPlayAnimationName(lua::lua_State* state)
