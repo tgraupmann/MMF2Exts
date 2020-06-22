@@ -1,12 +1,6 @@
 #include "Common.h"
 #include "Public/ChromaAnimationAPI.h"
 
-#if _UNICODE
-#pragma message("Building the UNICODE vesion of the ChromaSDK extension")
-#else
-#pragma message("Building the NON_UNICODE vesion of the ChromaSDK extension")
-#endif
-
 using namespace ChromaSDK;
 
 ///

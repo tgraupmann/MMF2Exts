@@ -117,6 +117,7 @@
     <ClCompile Include="Private\ChromaAnimationAPI.cpp" />
     <ClCompile Include="Private\ChromaSDKPluginTypes.cpp" />
     <ClCompile Include="Runtime.cpp" />
+    <ClCompile Include="WrapperXLuaGlobal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DarkExt.json" />
@@ -136,9 +137,99 @@
     <ClInclude Include="Public\RzChromaSDKTypes.h" />
     <ClInclude Include="Public\RzErrors.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="WrapperXLuaGlobal.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Ext.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="..\..\..\XLua\XLua\Debug\Accessor.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\AutoComplete.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\bit.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\CallStack.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\CallStackFrame.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\CallTip.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\Catalogue.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\CellBuffer.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\CharacterSet.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\CharClassify.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ContractionState.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\Decoration.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\Document.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\Editor.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\EditSci.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ExternalLexer.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\Indicator.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\KeyMap.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lapi.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lauxlib.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lbaselib.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lcoco.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lcode.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ldblib.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ldebug.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ldo.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ldump.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\LexerBase.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\LexerModule.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\LexerNoExceptions.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\LexerSimple.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\LexLua.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lfunc.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lgc.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\LineMarker.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\linit.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\liolib.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ljitlib.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ljit_backend.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ljit_core.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ljit_dasm.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ljit_mem.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\llex.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lmathlib.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lmem.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\loadlib.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lobject.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lopcodes.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\loslib.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lparser.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lstate.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lstring.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lstrlib.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ltable.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ltablib.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ltm.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\LuaMMF.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\LuaParam.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\LuaXLua.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lundump.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lvm.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\lzio.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\MainActions.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\MainConditions.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\MainExpressions.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\PerLine.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\PlatWin.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\PositionCache.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\PropSetSimple.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\RESearch.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\RunStyles.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ScintillaBase.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ScintillaWin.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\Selection.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\Style.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\StyleContext.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\UniConversion.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\ViewStyle.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\WordList.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\xlua.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\XLuaGlobal.obj">
+      <DeploymentContent>false</DeploymentContent>
+      <FileType>OBJ</FileType>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\XLuaObject.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\XLuaState.obj" />
+    <Object Include="..\..\..\XLua\XLua\Debug\XPM.obj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

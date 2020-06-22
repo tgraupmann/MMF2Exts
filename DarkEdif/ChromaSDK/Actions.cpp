@@ -1,8 +1,15 @@
-//#define USE_X_LUA true
+#define USE_X_LUA true
 
 #include "Common.h"
 #include "Public/ChromaAnimationAPI.h"
+#include "WrapperXLuaGlobal.h"
 #include <string>
+
+#if _UNICODE
+#pragma message("Building the UNICODE vesion of the ChromaSDK extension")
+#else
+#pragma message("Building the NON_UNICODE vesion of the ChromaSDK extension")
+#endif
 
 #ifdef USE_X_LUA
 #define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS
@@ -264,22 +271,46 @@ void Extension::CopyNonZeroAllKeysAllFramesName(const TCHAR* sourceAnimation, co
 void Extension::ConnectXLua()
 {
 #ifdef USE_X_LUA
-	stdext::hash_map<int, lua::XLuaState*>& stateTable = lua::XLuaGlobal::Get()._stateTable;
-	for (stdext::hash_map<int, lua::XLuaState*>::iterator iter = stateTable.begin(); iter != stateTable.end(); ++iter)
+	lua::XLuaState* xState = nullptr;
+	int sid = 0;
+	// Use the wrapper to call the global namespace :: include of XLuaGlobal
+	if (WrapperXLuaGlobal::GetState(sid) == nullptr)
 	{
-		lua::XLuaState* xState = iter->second;
-		if (xState != NULL)
+		// The global namespace :: is able to create XLuaState states without link errors
+		if (WrapperXLuaGlobal::CreateState(sid))
 		{
-			lua::lua_State* lState = xState->state;
-			if (lState)
-			{
-				lua::lua_getglobal(lState, "mmf");
+			OutputDebugStringA("Created Lua state!");
+			// We aren't able to import the XLuaState from the global namespace because API changes
+			// So we import XLuaState to the lua namespace to avoid API collisions
+			// Here we cast the global namespaced XLuaState to the lua namespaced XLuaState
+			xState = (lua::XLuaState*)WrapperXLuaGlobal::GetState(sid);
+		}
+		else
+		{
+			OutputDebugStringA("Failed to created Lua state!");
+		}
+	}
+	else
+	{
+		// We can reuse the existing created state
+		OutputDebugStringA("Found Lua state!");
+		// Here we cast the global namespaced XLuaState to the lua namespaced XLuaState
+		xState = (lua::XLuaState * )WrapperXLuaGlobal::GetState(sid);
+	}
 
-				lua::lua_pushcfunction(lState, Extension::LuaPlayAnimationName);
-				lua::lua_setfield(lState, 2, "playAnimationName");
+	if (xState != NULL)
+	{
+		// The lua_State is used in all the binding functions
+		lua::lua_State* lState = xState->state;
+		if (lState)
+		{
+			// we are able to call inlined methods in the headers for objects in the lua namespace
+			lua::lua_getglobal(lState, "mmf");
 
-				lua::lua_pop(lState, 1);
-			}
+			lua::lua_pushcfunction(lState, Extension::LuaPlayAnimationName);
+			lua::lua_setfield(lState, 2, "playAnimationName");
+
+			lua::lua_pop(lState, 1);
 		}
 	}
 #endif
@@ -299,5 +330,7 @@ int Extension::LuaPlayAnimationName(lua::lua_State* state)
 }
 
 #ifdef USE_X_LUA
-#pragma comment(lib, "xlua.lib")
+//#pragma comment(lib, "xlua.lib") //causing Unicode error
 #endif
+
+#pragma comment(lib, "Imm32.lib") //causing Unicode error

@@ -49,6 +49,9 @@
     <ClCompile Include="Private\ChromaSDKPluginTypes.cpp">
       <Filter>Razer\Private</Filter>
     </ClCompile>
+    <ClCompile Include="WrapperXLuaGlobal.cpp">
+      <Filter>LuaWrapper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Extension.h">
@@ -90,6 +93,9 @@
     <ClInclude Include="Public\RzErrors.h">
       <Filter>Razer\Public</Filter>
     </ClInclude>
+    <ClInclude Include="WrapperXLuaGlobal.h">
+      <Filter>LuaWrapper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png">
@@ -127,10 +133,270 @@
     <Filter Include="Razer\Public">
       <UniqueIdentifier>{b49b88d9-7878-474a-b913-cee98f0f4768}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lua">
+      <UniqueIdentifier>{a63c0a0d-5b2f-437c-a671-61ed99b598f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LuaWrapper">
+      <UniqueIdentifier>{9b24408a-2703-413c-b818-a1a2232bed2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Ext.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="..\..\..\XLua\XLua\Debug\Accessor.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\AutoComplete.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\bit.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\CallStack.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\CallStackFrame.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\CallTip.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\Catalogue.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\CellBuffer.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\CharacterSet.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\CharClassify.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ContractionState.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\Decoration.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\Document.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\Editor.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\EditSci.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ExternalLexer.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\Indicator.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\KeyMap.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lapi.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lauxlib.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lbaselib.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lcoco.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lcode.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ldblib.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ldebug.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ldo.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ldump.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\LexerBase.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\LexerModule.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\LexerNoExceptions.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\LexerSimple.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\LexLua.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lfunc.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lgc.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\LineMarker.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\linit.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\liolib.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ljit_backend.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ljit_core.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ljit_dasm.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ljit_mem.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ljitlib.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\llex.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lmathlib.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lmem.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\loadlib.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lobject.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lopcodes.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\loslib.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lparser.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lstate.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lstring.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lstrlib.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ltable.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ltablib.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ltm.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\LuaMMF.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\LuaParam.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\LuaXLua.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lundump.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lvm.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\lzio.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\MainActions.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\MainConditions.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\MainExpressions.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\PerLine.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\PlatWin.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\PositionCache.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\PropSetSimple.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\RESearch.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\RunStyles.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ScintillaBase.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ScintillaWin.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\Selection.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\Style.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\StyleContext.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\UniConversion.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\ViewStyle.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\WordList.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\xlua.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\XLuaGlobal.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\XLuaObject.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\XLuaState.obj">
+      <Filter>Lua</Filter>
+    </Object>
+    <Object Include="..\..\..\XLua\XLua\Debug\XPM.obj">
+      <Filter>Lua</Filter>
+    </Object>
   </ItemGroup>
 </Project>
