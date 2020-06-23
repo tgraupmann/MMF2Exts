@@ -158,256 +158,256 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\Accessor.obj">
+    <Object Include="Accessor.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\AutoComplete.obj">
+    <Object Include="AutoComplete.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\bit.obj">
+    <Object Include="bit.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\CallStack.obj">
+    <Object Include="CallStack.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\CallStackFrame.obj">
+    <Object Include="CallStackFrame.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\CallTip.obj">
+    <Object Include="CallTip.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\Catalogue.obj">
+    <Object Include="Catalogue.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\CellBuffer.obj">
+    <Object Include="CellBuffer.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\CharacterSet.obj">
+    <Object Include="CharacterSet.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\CharClassify.obj">
+    <Object Include="CharClassify.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ContractionState.obj">
+    <Object Include="ContractionState.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\Decoration.obj">
+    <Object Include="Decoration.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\Document.obj">
+    <Object Include="Document.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\Editor.obj">
+    <Object Include="Editor.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\EditSci.obj">
+    <Object Include="EditSci.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ExternalLexer.obj">
+    <Object Include="ExternalLexer.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\Indicator.obj">
+    <Object Include="Indicator.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\KeyMap.obj">
+    <Object Include="KeyMap.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lapi.obj">
+    <Object Include="lapi.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lauxlib.obj">
+    <Object Include="lauxlib.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lbaselib.obj">
+    <Object Include="lbaselib.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lcoco.obj">
+    <Object Include="lcoco.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lcode.obj">
+    <Object Include="lcode.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ldblib.obj">
+    <Object Include="ldblib.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ldebug.obj">
+    <Object Include="ldebug.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ldo.obj">
+    <Object Include="ldo.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ldump.obj">
+    <Object Include="ldump.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\LexerBase.obj">
+    <Object Include="LexerBase.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\LexerModule.obj">
+    <Object Include="LexerModule.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\LexerNoExceptions.obj">
+    <Object Include="LexerNoExceptions.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\LexerSimple.obj">
+    <Object Include="LexerSimple.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\LexLua.obj">
+    <Object Include="LexLua.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lfunc.obj">
+    <Object Include="lfunc.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lgc.obj">
+    <Object Include="lgc.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\LineMarker.obj">
+    <Object Include="LineMarker.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\linit.obj">
+    <Object Include="linit.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\liolib.obj">
+    <Object Include="liolib.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ljit_backend.obj">
+    <Object Include="ljit_backend.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ljit_core.obj">
+    <Object Include="ljit_core.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ljit_dasm.obj">
+    <Object Include="ljit_dasm.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ljit_mem.obj">
+    <Object Include="ljit_mem.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ljitlib.obj">
+    <Object Include="ljitlib.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\llex.obj">
+    <Object Include="llex.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lmathlib.obj">
+    <Object Include="lmathlib.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lmem.obj">
+    <Object Include="lmem.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\loadlib.obj">
+    <Object Include="loadlib.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lobject.obj">
+    <Object Include="lobject.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lopcodes.obj">
+    <Object Include="lopcodes.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\loslib.obj">
+    <Object Include="loslib.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lparser.obj">
+    <Object Include="lparser.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lstate.obj">
+    <Object Include="lstate.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lstring.obj">
+    <Object Include="lstring.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lstrlib.obj">
+    <Object Include="lstrlib.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ltable.obj">
+    <Object Include="ltable.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ltablib.obj">
+    <Object Include="ltablib.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ltm.obj">
+    <Object Include="ltm.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\LuaMMF.obj">
+    <Object Include="LuaMMF.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\LuaParam.obj">
+    <Object Include="LuaParam.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\LuaXLua.obj">
+    <Object Include="LuaXLua.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lundump.obj">
+    <Object Include="lundump.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lvm.obj">
+    <Object Include="lvm.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\lzio.obj">
+    <Object Include="lzio.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\MainActions.obj">
+    <Object Include="MainActions.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\MainConditions.obj">
+    <Object Include="MainConditions.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\MainExpressions.obj">
+    <Object Include="MainExpressions.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\PerLine.obj">
+    <Object Include="PerLine.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\PlatWin.obj">
+    <Object Include="PlatWin.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\PositionCache.obj">
+    <Object Include="PositionCache.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\PropSetSimple.obj">
+    <Object Include="PropSetSimple.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\RESearch.obj">
+    <Object Include="RESearch.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\RunStyles.obj">
+    <Object Include="RunStyles.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ScintillaBase.obj">
+    <Object Include="ScintillaBase.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ScintillaWin.obj">
+    <Object Include="ScintillaWin.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\Selection.obj">
+    <Object Include="Selection.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\Style.obj">
+    <Object Include="Style.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\StyleContext.obj">
+    <Object Include="StyleContext.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\UniConversion.obj">
+    <Object Include="UniConversion.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\ViewStyle.obj">
+    <Object Include="ViewStyle.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\WordList.obj">
+    <Object Include="WordList.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\xlua.obj">
+    <Object Include="xlua.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\XLuaGlobal.obj">
+    <Object Include="XLuaGlobal.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\XLuaObject.obj">
+    <Object Include="XLuaObject.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\XLuaState.obj">
+    <Object Include="XLuaState.obj">
       <Filter>Lua</Filter>
     </Object>
-    <Object Include="..\..\..\XLua\XLua\$(Configuration)\XPM.obj">
+    <Object Include="XPM.obj">
       <Filter>Lua</Filter>
     </Object>
   </ItemGroup>
