@@ -5,6 +5,7 @@
 
 namespace lua
 {
+	class XLuaState;
 	typedef struct lua_State lua_State;
 }
 
@@ -91,6 +92,8 @@ public:
 
 		void CopyNonZeroTargetAllKeysAllFramesName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation);
 		void CopyNonZeroAllKeysAllFramesName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation);
+
+		lua::XLuaState* GetLuaState();
 
 		void ConnectXLua();
 

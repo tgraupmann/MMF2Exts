@@ -1,5 +1,3 @@
-#define USE_X_LUA true
-
 #include "Common.h"
 #include "Public/ChromaAnimationAPI.h"
 #include "WrapperXLuaGlobal.h"
@@ -12,15 +10,12 @@
 #pragma message("Building the NON_UNICODE vesion of the ChromaSDK extension")
 #endif
 
-#ifdef USE_X_LUA
 #define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS
 #include <hash_map>
 namespace lua
 {
-	#include "lua.hpp"
 	#include "XLuaState.h"
 }
-#endif
 
 using namespace ChromaSDK;
 using namespace std;
@@ -268,13 +263,13 @@ void Extension::CopyNonZeroAllKeysAllFramesName(const TCHAR* sourceAnimation, co
 	}
 }
 
-void Extension::ConnectXLua()
+lua::XLuaState* Extension::GetLuaState()
 {
-#ifdef USE_X_LUA
-	lua::XLuaState* xState = nullptr;
 	int sid = 0;
+	lua::XLuaState* xState = (lua::XLuaState*)WrapperXLuaGlobal::GetState(sid);
+	
 	// Use the wrapper to call the global namespace :: include of XLuaGlobal
-	if (WrapperXLuaGlobal::GetState(sid) == nullptr)
+	if (xState == nullptr)
 	{
 		// The global namespace :: is able to create XLuaState states without link errors
 		if (WrapperXLuaGlobal::CreateState(sid))
@@ -290,14 +285,25 @@ void Extension::ConnectXLua()
 			OutputDebugStringA("Failed to created Lua state!");
 		}
 	}
-	else
-	{
-		// We can reuse the existing created state
-		OutputDebugStringA("Found Lua state!");
-		// Here we cast the global namespaced XLuaState to the lua namespaced XLuaState
-		xState = (lua::XLuaState * )WrapperXLuaGlobal::GetState(sid);
-	}
+	return xState;
+}
 
+void Extension::ActExecuteLua(const TCHAR* source)
+{
+	lua::XLuaState* xState = GetLuaState();
+	if (xState != NULL)
+	{
+		basic_string<TCHAR> bsSource(source);
+		string sSource(bsSource.begin(), bsSource.end());
+		const char* cSource = sSource.c_str();
+
+		WrapperXLuaState::LoadString(xState, cSource);
+	}
+}
+
+void Extension::ConnectXLua()
+{
+	lua::XLuaState* xState = GetLuaState();
 	if (xState != NULL)
 	{
 		// The lua_State is used in all the binding functions
@@ -309,29 +315,20 @@ void Extension::ConnectXLua()
 		}
 		WrapperXLuaState::LoadFile(xState, "Sample.lua");
 	}
-#endif
-}
-
-void Extension::ActExecuteLua(const TCHAR* source)
-{
-
 }
 
 int Extension::LuaPlayAnimationName(lua::lua_State* state)
 {
-#ifdef USE_X_LUA
 	if (state)
 	{
 		OutputDebugStringA("LuaPlayAnimationName: State is valid!");
 		return 0;
 	}
-#endif
-	OutputDebugStringA("LuaPlayAnimationName: State is not valid!");
-	return -1;
+	else
+	{
+		OutputDebugStringA("LuaPlayAnimationName: State is not valid!");
+		return -1;
+	}
 }
-
-#ifdef USE_X_LUA
-//#pragma comment(lib, "xlua.lib") //causing Unicode error
-#endif
 
 #pragma comment(lib, "Imm32.lib") //causing Unicode error
