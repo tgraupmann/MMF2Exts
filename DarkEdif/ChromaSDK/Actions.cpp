@@ -1,5 +1,6 @@
 #include "Common.h"
 #include "Public/ChromaAnimationAPI.h"
+#include "WrapperXLua.h"
 #include "WrapperXLuaGlobal.h"
 #include "WrapperXLuaState.h"
 #include <string>
@@ -317,11 +318,31 @@ void Extension::ConnectXLua()
 	}
 }
 
+#undef lua_tostring
+#undef lua_isboolean
+
 int Extension::LuaPlayAnimationName(lua::lua_State* state)
 {
 	if (state)
 	{
 		OutputDebugStringA("LuaPlayAnimationName: State is valid!");
+
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+
+		std::string path = WrapperXLua::lua_tostringW(state, 1);
+
+		if (!WrapperXLua::lua_isbooleanW(state, 2))
+		{
+			return -1;
+		}
+
+		bool loop = WrapperXLua::lua_tobooleanW(state, 2) == 1;
+
+		ChromaAnimationAPI::PlayAnimationName(path.c_str(), loop);
+
 		return 0;
 	}
 	else

@@ -55,6 +55,9 @@
     <ClCompile Include="WrapperXLuaState.cpp">
       <Filter>LuaWrapper</Filter>
     </ClCompile>
+    <ClCompile Include="WrapperXLua.cpp">
+      <Filter>LuaWrapper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Extension.h">
@@ -100,6 +103,9 @@
       <Filter>LuaWrapper</Filter>
     </ClInclude>
     <ClInclude Include="WrapperXLuaState.h">
+      <Filter>LuaWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="WrapperXLua.h">
       <Filter>LuaWrapper</Filter>
     </ClInclude>
   </ItemGroup>

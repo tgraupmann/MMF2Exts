@@ -117,6 +117,7 @@
     <ClCompile Include="Private\ChromaAnimationAPI.cpp" />
     <ClCompile Include="Private\ChromaSDKPluginTypes.cpp" />
     <ClCompile Include="Runtime.cpp" />
+    <ClCompile Include="WrapperXLua.cpp" />
     <ClCompile Include="WrapperXLuaGlobal.cpp" />
     <ClCompile Include="WrapperXLuaState.cpp" />
   </ItemGroup>
@@ -138,6 +139,7 @@
     <ClInclude Include="Public\RzChromaSDKTypes.h" />
     <ClInclude Include="Public\RzErrors.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="WrapperXLua.h" />
     <ClInclude Include="WrapperXLuaGlobal.h" />
     <ClInclude Include="WrapperXLuaState.h" />
   </ItemGroup>
