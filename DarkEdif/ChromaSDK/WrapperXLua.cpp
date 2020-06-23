@@ -2383,6 +2383,34 @@ LUA_API int lua_toboolean(lua_State* L, int idx) {
 	return !l_isfalse(o);
 }
 
+LUA_API lua_Number lua_tonumber(lua_State* L, int idx) {
+	TValue n;
+	const TValue* o = index2adr(L, idx);
+	if (tonumber(o, &n))
+		return nvalue(o);
+	else
+		return 0;
+}
+
+LUA_API lua_Integer lua_tointeger(lua_State* L, int idx) {
+	TValue n;
+	const TValue* o = index2adr(L, idx);
+	if (tonumber(o, &n)) {
+		lua_Integer res;
+		lua_Number num = nvalue(o);
+		lua_number2integer(res, num);
+		return res;
+	}
+	else
+		return 0;
+}
+
+LUA_API int lua_isnumber(lua_State* L, int idx) {
+	TValue n;
+	const TValue* o = index2adr(L, idx);
+	return tonumber(o, &n);
+}
+
 LUA_API int lua_isstring(lua_State* L, int idx) {
 	int t = lua_type(L, idx);
 	return (t == LUA_TSTRING || t == LUA_TNUMBER);
@@ -3196,6 +3224,11 @@ bool WrapperXLua::lua_isbooleanW(void* state, int idx)
 	return lua_isboolean((lua_State*)state, idx);
 }
 
+bool WrapperXLua::lua_isnumberW(void* state, int idx)
+{
+	return lua_isnumber((lua_State*)state, idx);
+}
+
 bool WrapperXLua::lua_isstringW(void* state, int idx)
 {
 	return lua_isstring((lua_State*)state, idx);
@@ -3204,6 +3237,16 @@ bool WrapperXLua::lua_isstringW(void* state, int idx)
 bool WrapperXLua::lua_tobooleanW(void* state, int idx)
 {
 	return lua_toboolean((lua_State*)state, idx) == 1;
+}
+
+double WrapperXLua::lua_tonumberW(void* state, int idx)
+{
+	return lua_tonumber((lua_State*)state, idx);
+}
+
+int WrapperXLua::lua_tointegerW(void* state, int idx)
+{
+	return lua_tointeger((lua_State*)state, idx);
 }
 
 std::string WrapperXLua::lua_tostringW(void* state, int idx)
