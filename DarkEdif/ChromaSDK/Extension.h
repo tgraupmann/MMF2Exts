@@ -95,11 +95,12 @@ public:
 
 		lua::XLuaState* GetLuaState();
 
-		void ConnectXLua();
+		void RegisterLuaFunctions();
 
 		static int LuaPlayAnimationName(lua::lua_State* state);
 
-		void ActExecuteLua(const TCHAR* source);
+		void ActLuaLoadString(const TCHAR* source);
+		void ActLuaLoadFile(const TCHAR* source);
 
 	/// Conditions
 

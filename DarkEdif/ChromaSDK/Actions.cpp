@@ -289,7 +289,7 @@ lua::XLuaState* Extension::GetLuaState()
 	return xState;
 }
 
-void Extension::ActExecuteLua(const TCHAR* source)
+void Extension::ActLuaLoadString(const TCHAR* source)
 {
 	lua::XLuaState* xState = GetLuaState();
 	if (xState != NULL)
@@ -302,7 +302,20 @@ void Extension::ActExecuteLua(const TCHAR* source)
 	}
 }
 
-void Extension::ConnectXLua()
+void Extension::ActLuaLoadFile(const TCHAR* source)
+{
+	lua::XLuaState* xState = GetLuaState();
+	if (xState != NULL)
+	{
+		basic_string<TCHAR> bsSource(source);
+		string sSource(bsSource.begin(), bsSource.end());
+		const char* cSource = sSource.c_str();
+
+		WrapperXLuaState::LoadFile(xState, cSource);
+	}
+}
+
+void Extension::RegisterLuaFunctions()
 {
 	lua::XLuaState* xState = GetLuaState();
 	if (xState != NULL)
@@ -314,12 +327,8 @@ void Extension::ConnectXLua()
 			lua::lua_pushcfunction(lState, Extension::LuaPlayAnimationName);
 			lua::lua_setglobal(lState, "PlayAnimationName");
 		}
-		WrapperXLuaState::LoadFile(xState, "Sample.lua");
 	}
 }
-
-#undef lua_tostring
-#undef lua_isboolean
 
 int Extension::LuaPlayAnimationName(lua::lua_State* state)
 {

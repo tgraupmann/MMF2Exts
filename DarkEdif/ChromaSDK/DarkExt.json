@@ -17,8 +17,9 @@
 			],
 			[
 				"Lua",
-				[ 20, "Connect to Lua States" ],
-				[ 22, "Execute Lua Function" ]
+				[ 20, "Register ChromaSDK with Lua" ],
+				[ 22, "Lua Load String" ],
+				[ 23, "Lua Load File" ]
 			],
 			[
 				"Colors",
@@ -205,7 +206,7 @@
 				"Title": "Initialize Extension"
 			},
 			{
-				"Title": "Connect to Lua States"
+				"Title": "Register ChromaSDK with Lua"
 			},
 			{
 				"Title": "Stop Animation",
@@ -214,9 +215,15 @@
 				]
 			},
 			{
-				"Title": "Execute Lua Function",
+				"Title": "Lua Load String",
 				"Parameters": [
-					[ "Text", "Name" ]
+					[ "Text", "Source" ]
+				]
+			},
+			{
+				"Title": "Lua Load File",
+				"Parameters": [
+					[ "Text", "Path" ]
 				]
 			}
 		],
