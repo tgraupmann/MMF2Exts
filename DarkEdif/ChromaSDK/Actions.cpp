@@ -324,6 +324,15 @@ void Extension::RegisterLuaFunctions()
 		lua::lua_State* lState = xState->state;
 		if (lState)
 		{
+			// Expose enums to lua
+			WrapperXLuaState::LoadString(xState, "EChromaSDKDeviceEnum = {}");
+			WrapperXLuaState::LoadString(xState, "EChromaSDKDeviceEnum.DE_ChromaLink = 0");
+			WrapperXLuaState::LoadString(xState, "EChromaSDKDeviceEnum.DE_Headset = 1");
+			WrapperXLuaState::LoadString(xState, "EChromaSDKDeviceEnum.DE_Keyboard = 2");
+			WrapperXLuaState::LoadString(xState, "EChromaSDKDeviceEnum.DE_Keypad = 3");
+			WrapperXLuaState::LoadString(xState, "EChromaSDKDeviceEnum.DE_Mouse = 4");
+			WrapperXLuaState::LoadString(xState, "EChromaSDKDeviceEnum.DE_Mousepad = 5");
+
 			// Create an object to bind the global functions
 			WrapperXLuaState::LoadString(xState, "ChromaAnimationAPI = {}");
 
@@ -13781,7 +13790,7 @@ int Extension::LuaPlayAnimationFrame(lua::lua_State* state)
 			return -1;
 		}
 		int frameId = WrapperXLua::lua_tointegerW(state, 2);
-		if (!WrapperXLua::lua_tobooleanW(state, 3))
+		if (!WrapperXLua::lua_isbooleanW(state, 3))
 		{
 			return -1;
 		}
@@ -13814,7 +13823,7 @@ int Extension::LuaPlayAnimationFrameName(lua::lua_State* state)
 			return -1;
 		}
 		int frameId = WrapperXLua::lua_tointegerW(state, 2);
-		if (!WrapperXLua::lua_tobooleanW(state, 3))
+		if (!WrapperXLua::lua_isbooleanW(state, 3))
 		{
 			return -1;
 		}
@@ -13873,7 +13882,7 @@ int Extension::LuaPlayAnimationLoop(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		if (!WrapperXLua::lua_isbooleanW(state, 2))
 		{
 			return -1;
 		}
@@ -13901,7 +13910,7 @@ int Extension::LuaPlayAnimationName(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		if (!WrapperXLua::lua_isbooleanW(state, 2))
 		{
 			return -1;
 		}
@@ -13955,7 +13964,7 @@ int Extension::LuaPlayComposite(lua::lua_State* state)
 			return -1;
 		}
 		string name = WrapperXLua::lua_tostringW(state, 1);
-		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		if (!WrapperXLua::lua_isbooleanW(state, 2))
 		{
 			return -1;
 		}
@@ -14189,7 +14198,7 @@ int Extension::LuaResumeAnimation(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		if (!WrapperXLua::lua_isbooleanW(state, 2))
 		{
 			return -1;
 		}
@@ -14215,7 +14224,7 @@ int Extension::LuaResumeAnimationName(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		if (!WrapperXLua::lua_isbooleanW(state, 2))
 		{
 			return -1;
 		}
@@ -14710,7 +14719,7 @@ int Extension::LuaSetChromaCustomFlag(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		if (!WrapperXLua::lua_isbooleanW(state, 2))
 		{
 			return -1;
 		}
@@ -14738,7 +14747,7 @@ int Extension::LuaSetChromaCustomFlagName(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		if (!WrapperXLua::lua_isbooleanW(state, 2))
 		{
 			return -1;
 		}
@@ -17770,7 +17779,7 @@ int Extension::LuaUseIdleAnimation(lua::lua_State* state)
 			return -1;
 		}
 		int device = WrapperXLua::lua_tointegerW(state, 1);
-		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		if (!WrapperXLua::lua_isbooleanW(state, 2))
 		{
 			return -1;
 		}
@@ -17791,7 +17800,7 @@ int Extension::LuaUseIdleAnimations(lua::lua_State* state)
 {
 	if (state)
 	{
-		if (!WrapperXLua::lua_tobooleanW(state, 1))
+		if (!WrapperXLua::lua_isbooleanW(state, 1))
 		{
 			return -1;
 		}
@@ -17818,7 +17827,7 @@ int Extension::LuaUsePreloading(lua::lua_State* state)
 			return -1;
 		}
 		int animationId = WrapperXLua::lua_tointegerW(state, 1);
-		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		if (!WrapperXLua::lua_isbooleanW(state, 2))
 		{
 			return -1;
 		}
@@ -17845,7 +17854,7 @@ int Extension::LuaUsePreloadingName(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		if (!WrapperXLua::lua_tobooleanW(state, 2))
+		if (!WrapperXLua::lua_isbooleanW(state, 2))
 		{
 			return -1;
 		}
