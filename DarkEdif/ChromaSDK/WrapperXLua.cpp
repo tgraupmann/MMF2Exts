@@ -17,6 +17,9 @@
 #include "luaconf.h"
 #include "lopcodes.h"
 #include "lzio.h"
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
 
 using namespace std;
 
@@ -368,6 +371,148 @@ void luaG_concaterror(lua_State* L, StkId p1, StkId p2) {
 	if (ttisstring(p1) || ttisnumber(p1)) p1 = p2;
 	lua_assert(!ttisstring(p1) && !ttisnumber(p1));
 	luaG_typeerror(L, p1, "concatenate");
+}
+
+LUA_API int lua_getstack(lua_State* L, int level, lua_Debug* ar) {
+	int status;
+	CallInfo* ci;
+	lua_lock(L);
+	for (ci = L->ci; level > 0 && ci > L->base_ci; ci--) {
+		level--;
+		if (f_isLua(ci))  /* Lua function? */
+			level -= ci->tailcalls;  /* skip lost tail calls */
+	}
+	if (level == 0 && ci > L->base_ci) {  /* level found? */
+		status = 1;
+		ar->i_ci = cast_int(ci - L->base_ci);
+	}
+	else if (level < 0) {  /* level is of a lost tail call? */
+		status = 1;
+		ar->i_ci = 0;
+	}
+	else status = 0;  /* no such level */
+	lua_unlock(L);
+	return status;
+}
+
+static void info_tailcall(lua_Debug* ar) {
+	ar->name = ar->namewhat = "";
+	ar->what = "tail";
+	ar->lastlinedefined = ar->linedefined = ar->currentline = -1;
+	ar->source = "=(tail call)";
+	luaO_chunkid(ar->short_src, ar->source, LUA_IDSIZE);
+	ar->nups = 0;
+}
+
+static const char* getfuncname(lua_State* L, CallInfo* ci, const char** name) {
+	Instruction i;
+	if ((isLua(ci) && ci->tailcalls > 0) || !isLua(ci - 1))
+		return NULL;  /* calling function is not Lua (or is unknown) */
+	ci--;  /* calling function */
+	i = ci_func(ci)->l.p->code[currentpc(L, ci)];
+	if (GET_OPCODE(i) == OP_CALL || GET_OPCODE(i) == OP_TAILCALL ||
+		GET_OPCODE(i) == OP_TFORLOOP)
+		return getobjname(L, ci, GETARG_A(i), name);
+	else
+		return NULL;  /* no useful name can be found */
+}
+
+static void funcinfo(lua_Debug* ar, Closure* cl) {
+	if (cl->c.isC) {
+		ar->source = "=[C]";
+		ar->linedefined = -1;
+		ar->lastlinedefined = -1;
+		ar->what = "C";
+	}
+	else {
+		ar->source = getstr(cl->l.p->source);
+		ar->linedefined = cl->l.p->linedefined;
+		ar->lastlinedefined = cl->l.p->lastlinedefined;
+		ar->what = (ar->linedefined == 0) ? "main" : "Lua";
+	}
+	luaO_chunkid(ar->short_src, ar->source, LUA_IDSIZE);
+}
+
+static int auxgetinfo(lua_State* L, const char* what, lua_Debug* ar,
+	Closure* f, CallInfo* ci) {
+	int status = 1;
+	if (f == NULL) {
+		info_tailcall(ar);
+		return status;
+	}
+	for (; *what; what++) {
+		switch (*what) {
+		case 'S': {
+			funcinfo(ar, f);
+			break;
+		}
+		case 'l': {
+			ar->currentline = (ci) ? currentline(L, ci) : -1;
+			break;
+		}
+		case 'u': {
+			ar->nups = f->c.nupvalues;
+			break;
+		}
+		case 'n': {
+			ar->namewhat = (ci) ? getfuncname(L, ci, &ar->name) : NULL;
+			if (ar->namewhat == NULL) {
+				ar->namewhat = "";  /* not found */
+				ar->name = NULL;
+			}
+			break;
+		}
+		case 'L':
+		case 'f':  /* handled by lua_getinfo */
+			break;
+		default: status = 0;  /* invalid option */
+		}
+	}
+	return status;
+}
+
+static void collectvalidlines(lua_State* L, Closure* f) {
+	if (f == NULL || f->c.isC) {
+		setnilvalue(L->top);
+	}
+	else {
+		Table* t = luaH_new(L, 0, 0);
+		int* lineinfo = f->l.p->lineinfo;
+		int i;
+		for (i = 0; i < f->l.p->sizelineinfo; i++)
+			setbvalue(luaH_setnum(L, t, lineinfo[i]), 1);
+		sethvalue(L, L->top, t);
+	}
+	incr_top(L);
+}
+
+LUA_API int lua_getinfo(lua_State* L, const char* what, lua_Debug* ar) {
+	int status;
+	Closure* f = NULL;
+	CallInfo* ci = NULL;
+	lua_lock(L);
+	if (*what == '>') {
+		StkId func = L->top - 1;
+		luai_apicheck(L, ttisfunction(func));
+		what++;  /* skip the '>' */
+		f = clvalue(func);
+		L->top--;  /* pop function */
+	}
+	else if (ar->i_ci != 0) {  /* no tail call? */
+		ci = L->base_ci + ar->i_ci;
+		lua_assert(ttisfunction(ci->func));
+		f = clvalue(ci->func);
+	}
+	status = auxgetinfo(L, what, ar, f, ci);
+	if (strchr(what, 'f')) {
+		if (f == NULL) setnilvalue(L->top);
+		else setclvalue(L, L->top, f);
+		incr_top(L);
+	}
+	if (strchr(what, 'L'))
+		collectvalidlines(L, f);
+	lua_unlock(L);
+	return status;
 }
 
 #pragma endregion
@@ -950,6 +1095,16 @@ UpVal* luaF_findupval(lua_State* L, StkId level) {
 	g->uvhead.u.l.next = uv;
 	lua_assert(uv->u.l.next->u.l.prev == uv && uv->u.l.prev->u.l.next == uv);
 	return uv;
+}
+
+Closure* luaF_newCclosure(lua_State* L, int nelems, Table* e) {
+	Closure* c = cast(Closure*, luaM_malloc(L, sizeCclosure(nelems)));
+	luaC_link(L, obj2gco(c), LUA_TFUNCTION);
+	c->c.isC = 1;
+	c->c.env = e;
+	c->c.nupvalues = cast_byte(nelems);
+	c->c.jit_gate = G(L)->jit_gateJC;
+	return c;
 }
 
 #pragma endregion
@@ -2340,6 +2495,10 @@ void luaS_resize(lua_State* L, int newsize) {
 
 #pragma region lapi_c
 
+#define api_checknelems(L, n)	api_check(L, (n) <= (L->top - L->base))
+
+#define api_checkvalidindex(L, i)	api_check(L, (i) != luaO_nilobject)
+
 /*
 ** access functions (stack -> C)
 */
@@ -2443,6 +2602,169 @@ LUA_API const char* lua_tolstring(lua_State* L, int idx, size_t* len) {
 	}
 	if (len != NULL) *len = tsvalue(o)->len;
 	return svalue(o);
+}
+
+LUA_API int lua_gettop(lua_State* L) {
+	return cast_int(L->top - L->base);
+}
+
+LUA_API void lua_settop(lua_State* L, int idx) {
+	lua_lock(L);
+	if (idx >= 0) {
+		api_check(L, idx <= L->stack_last - L->base);
+		while (L->top < L->base + idx)
+			setnilvalue(L->top++);
+		L->top = L->base + idx;
+	}
+	else {
+		api_check(L, -(idx + 1) <= (L->top - L->base));
+		L->top += idx + 1;  /* `subtract' index (index is negative) */
+	}
+	lua_unlock(L);
+}
+
+#define api_incr_top(L)   {api_check(L, L->top < L->ci->top); L->top++;}
+
+LUA_API void lua_pushnumber(lua_State* L, lua_Number n) {
+	lua_lock(L);
+	setnvalue(L->top, n);
+	api_incr_top(L);
+	lua_unlock(L);
+}
+
+LUA_API void lua_pushlstring(lua_State* L, const char* s, size_t len) {
+	lua_lock(L);
+	luaC_checkGC(L);
+	setsvalue2s(L, L->top, luaS_newlstr(L, s, len));
+	api_incr_top(L);
+	lua_unlock(L);
+}
+
+LUA_API const char* lua_typename(lua_State* L, int t) {
+	UNUSED(L);
+	return (t == LUA_TNONE) ? "no value" : luaT_typenames[t];
+}
+
+LUA_API const char* lua_pushfstring(lua_State* L, const char* fmt, ...) {
+	const char* ret;
+	va_list argp;
+	lua_lock(L);
+	luaC_checkGC(L);
+	va_start(argp, fmt);
+	ret = luaO_pushvfstring(L, fmt, argp);
+	va_end(argp);
+	lua_unlock(L);
+	return ret;
+}
+
+LUA_API const char* lua_pushvfstring(lua_State* L, const char* fmt,
+	va_list argp) {
+	const char* ret;
+	lua_lock(L);
+	luaC_checkGC(L);
+	ret = luaO_pushvfstring(L, fmt, argp);
+	lua_unlock(L);
+	return ret;
+}
+
+LUA_API int lua_error(lua_State* L) {
+	lua_lock(L);
+	api_checknelems(L, 1);
+	luaG_errormsg(L);
+	lua_unlock(L);
+	return 0;  /* to avoid warnings */
+}
+
+LUA_API void lua_concat(lua_State* L, int n) {
+	lua_lock(L);
+	api_checknelems(L, n);
+	if (n >= 2) {
+		luaC_checkGC(L);
+		luaV_concat(L, n, cast_int(L->top - L->base) - 1);
+		L->top -= (n - 1);
+	}
+	else if (n == 0) {  /* push empty string */
+		setsvalue2s(L, L->top, luaS_newlstr(L, "", 0));
+		api_incr_top(L);
+	}
+	/* else n == 1; nothing to do */
+	lua_unlock(L);
+}
+
+LUA_API void lua_rawgeti(lua_State* L, int idx, int n) {
+	StkId o;
+	lua_lock(L);
+	o = index2adr(L, idx);
+	api_check(L, ttistable(o));
+	setobj2s(L, L->top, luaH_getnum(hvalue(o), n));
+	api_incr_top(L);
+	lua_unlock(L);
+}
+
+LUA_API void lua_createtable(lua_State* L, int narray, int nrec) {
+	lua_lock(L);
+	luaC_checkGC(L);
+	sethvalue(L, L->top, luaH_new(L, narray, nrec));
+	api_incr_top(L);
+	lua_unlock(L);
+}
+
+LUA_API void lua_settable(lua_State* L, int idx) {
+	StkId t;
+	lua_lock(L);
+	api_checknelems(L, 2);
+	t = index2adr(L, idx);
+	api_checkvalidindex(L, t);
+	luaV_settable(L, t, L->top - 2, L->top - 1);
+	L->top -= 2;  /* pop index and value */
+	lua_unlock(L);
+}
+
+LUA_API void lua_rawget(lua_State* L, int idx) {
+	StkId t;
+	lua_lock(L);
+	t = index2adr(L, idx);
+	api_check(L, ttistable(t));
+	setobj2s(L, L->top - 1, luaH_get(hvalue(t), L->top - 1));
+	lua_unlock(L);
+}
+
+LUA_API void lua_pushstring(lua_State* L, const char* s) {
+	if (s == NULL)
+		lua_pushnil(L);
+	else
+		lua_pushlstring(L, s, strlen(s));
+}
+
+LUA_API void lua_pushnil(lua_State* L) {
+	lua_lock(L);
+	setnilvalue(L->top);
+	api_incr_top(L);
+	lua_unlock(L);
+}
+
+#define adjustresults(L,nres) \
+    { if (nres == LUA_MULTRET && L->top >= L->ci->top) L->ci->top = L->top; }
+
+#define checkresults(L,na,nr) \
+     api_check(L, (nr) == LUA_MULTRET || (L->ci->top - L->top >= (nr) - (na)))
+
+LUA_API void lua_call(lua_State* L, int nargs, int nresults) {
+	StkId func;
+	lua_lock(L);
+	api_checknelems(L, nargs + 1);
+	checkresults(L, nargs, nresults);
+	func = L->top - (nargs + 1);
+	luaD_call(L, func, nresults);
+	adjustresults(L, nresults);
+	lua_unlock(L);
+}
+
+LUA_API void lua_pushinteger(lua_State* L, lua_Integer n) {
+	lua_lock(L);
+	setnvalue(L->top, cast_num(n));
+	api_incr_top(L);
+	lua_unlock(L);
 }
 
 #pragma endregion
@@ -3219,6 +3541,480 @@ const lu_byte luaP_opmodes[NUM_OPCODES] = {
 
 #pragma endregion
 
+#pragma region bit_c
+
+/*
+** Lua BitOp -- a bit operations library for Lua 5.1.
+** http://bitop.luajit.org/
+**
+** Copyright (C) 2008-2009 Mike Pall. All rights reserved.
+**
+** Permission is hereby granted, free of charge, to any person obtaining
+** a copy of this software and associated documentation files (the
+** "Software"), to deal in the Software without restriction, including
+** without limitation the rights to use, copy, modify, merge, publish,
+** distribute, sublicense, and/or sell copies of the Software, and to
+** permit persons to whom the Software is furnished to do so, subject to
+** the following conditions:
+**
+** The above copyright notice and this permission notice shall be
+** included in all copies or substantial portions of the Software.
+**
+** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+** MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+** CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+** TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+** SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+**
+** [ MIT license: http://www.opensource.org/licenses/mit-license.php ]
+*/
+
+#define LUA_BITOP_VERSION	"1.0.1"
+
+#define LUA_LIB
+#include "lua.h"
+#include "lauxlib.h"
+
+#ifdef _MSC_VER
+/* MSVC is stuck in the last century and doesn't have C99's stdint.h. */
+typedef __int32 int32_t;
+typedef unsigned __int32 uint32_t;
+typedef unsigned __int64 uint64_t;
+#else
+#include <stdint.h>
+#endif
+
+typedef int32_t SBits;
+typedef uint32_t UBits;
+
+typedef union {
+	lua_Number n;
+#ifdef LUA_NUMBER_DOUBLE
+	uint64_t b;
+#else
+	UBits b;
+#endif
+} BitNum;
+
+/* Convert argument to bit type. */
+static UBits barg(lua_State* L, int idx)
+{
+	BitNum bn;
+	UBits b;
+	bn.n = lua_tonumber(L, idx);
+#if defined(LUA_NUMBER_DOUBLE)
+	bn.n += 6755399441055744.0;  /* 2^52+2^51 */
+#ifdef SWAPPED_DOUBLE
+	b = (UBits)(bn.b >> 32);
+#else
+	b = (UBits)bn.b;
+#endif
+#elif defined(LUA_NUMBER_INT) || defined(LUA_NUMBER_LONG) || \
+      defined(LUA_NUMBER_LONGLONG) || defined(LUA_NUMBER_LONG_LONG) || \
+      defined(LUA_NUMBER_LLONG)
+	if (sizeof(UBits) == sizeof(lua_Number))
+		b = bn.b;
+	else
+		b = (UBits)(SBits)bn.n;
+#elif defined(LUA_NUMBER_FLOAT)
+#error "A 'float' lua_Number type is incompatible with this library"
+#else
+#error "Unknown number type, check LUA_NUMBER_* in luaconf.h"
+#endif
+	if (b == 0 && !lua_isnumber(L, idx))
+		luaL_typerror(L, idx, "number");
+	return b;
+}
+
+/* Return bit type. */
+#define BRET(b)  lua_pushnumber(L, (lua_Number)(SBits)(b)); return 1;
+
+#define UBRET(b)  lua_pushnumber(L, (lua_Number)(UBits)(b)); return 1;
+
+static int bit_tobit(lua_State* L) { BRET(barg(L, 1)) }
+static int bit_bnot(lua_State* L) { BRET(~barg(L, 1)) }
+
+static int bit_toubit(lua_State* L) { UBRET(barg(L, 1)) }
+static int bit_ubnot(lua_State* L) { UBRET(~barg(L, 1)) }
+
+#define BIT_OP(func, opr) \
+  static int func(lua_State *L) { int i; UBits b = barg(L, 1); \
+    for (i = lua_gettop(L); i > 1; i--) b opr barg(L, i); BRET(b) }
+BIT_OP(bit_band, &=)
+BIT_OP(bit_bor, |=)
+BIT_OP(bit_bxor, ^=)
+
+#define UBIT_OP(func, opr) \
+  static int func(lua_State *L) { int i; UBits b = barg(L, 1); \
+    for (i = lua_gettop(L); i > 1; i--) b opr barg(L, i); UBRET(b) }
+UBIT_OP(bit_uband, &=)
+UBIT_OP(bit_ubor, |=)
+UBIT_OP(bit_ubxor, ^=)
+
+#define bshl(b, n)  (b << n)
+#define bshr(b, n)  (b >> n)
+#define bsar(b, n)  ((SBits)b >> n)
+#define brol(b, n)  ((b << n) | (b >> (32-n)))
+#define bror(b, n)  ((b << (32-n)) | (b >> n))
+#define BIT_SH(func, fn) \
+  static int func(lua_State *L) { \
+    UBits b = barg(L, 1); UBits n = barg(L, 2) & 31; BRET(fn(b, n)) }
+BIT_SH(bit_lshift, bshl)
+BIT_SH(bit_rshift, bshr)
+BIT_SH(bit_arshift, bsar)
+BIT_SH(bit_rol, brol)
+BIT_SH(bit_ror, bror)
+
+#define UBIT_SH(func, fn) \
+  static int func(lua_State *L) { \
+    UBits b = barg(L, 1); UBits n = barg(L, 2) & 31; UBRET(fn(b, n)) }
+UBIT_SH(bit_ulshift, bshl)
+UBIT_SH(bit_urshift, bshr)
+UBIT_SH(bit_urol, brol)
+UBIT_SH(bit_uror, bror)
+
+static int bit_bswap(lua_State* L)
+{
+	UBits b = barg(L, 1);
+	b = (b >> 24) | ((b >> 8) & 0xff00) | ((b & 0xff00) << 8) | (b << 24);
+	BRET(b)
+}
+
+static int bit_ubswap(lua_State* L)
+{
+	UBits b = barg(L, 1);
+	b = (b >> 24) | ((b >> 8) & 0xff00) | ((b & 0xff00) << 8) | (b << 24);
+	UBRET(b)
+}
+
+static int bit_tohex(lua_State* L)
+{
+	UBits b = barg(L, 1);
+	SBits n = lua_isnone(L, 2) ? 8 : (SBits)barg(L, 2);
+	const char* hexdigits = "0123456789abcdef";
+	char buf[8];
+	int i;
+	if (n < 0) { n = -n; hexdigits = "0123456789ABCDEF"; }
+	if (n > 8) n = 8;
+	for (i = (int)n; --i >= 0; ) { buf[i] = hexdigits[b & 15]; b >>= 4; }
+	lua_pushlstring(L, buf, (size_t)n);
+	return 1;
+}
+
+static const struct luaL_Reg bit_funcs[] = {
+  { "tobit",	bit_tobit },
+  { "bnot",	bit_bnot },
+  { "band",	bit_band },
+  { "bor",	bit_bor },
+  { "bxor",	bit_bxor },
+  { "lshift",	bit_lshift },
+  { "rshift",	bit_rshift },
+  { "arshift",	bit_arshift },
+  { "rol",	bit_rol },
+  { "ror",	bit_ror },
+  { "bswap",	bit_bswap },
+  { "tohex",	bit_tohex },
+
+  { "toubit",	bit_toubit },
+  { "ubnot",	bit_ubnot },
+  { "uband",	bit_uband },
+  { "ubor",	bit_ubor },
+  { "ubxor",	bit_ubxor },
+  { "ulshift",	bit_ulshift },
+  { "urshift",	bit_urshift },
+  { "urol",	bit_urol },
+  { "uror",	bit_uror },
+  { "ubswap",	bit_ubswap },
+  { NULL, NULL }
+};
+
+/* Signed right-shifts are implementation-defined per C89/C99.
+** But the de facto standard are arithmetic right-shifts on two's
+** complement CPUs. This behaviour is required here, so test for it.
+*/
+#define BAD_SAR		(bsar(-8, 2) != (SBits)-2)
+
+LUALIB_API int luaopen_bit(lua_State* L)
+{
+	UBits b;
+	lua_pushnumber(L, (lua_Number)1437217655L);
+	b = barg(L, -1);
+	if (b != (UBits)1437217655L || BAD_SAR) {  /* Perform a simple self-test. */
+		const char* msg = "compiled with incompatible luaconf.h";
+#ifdef LUA_NUMBER_DOUBLE
+#ifdef _WIN32
+		if (b == (UBits)1610612736L)
+			msg = "use D3DCREATE_FPU_PRESERVE with DirectX";
+#endif
+		if (b == (UBits)1127743488L)
+			msg = "not compiled with SWAPPED_DOUBLE";
+#endif
+		if (BAD_SAR)
+			msg = "arithmetic right-shift broken";
+		luaL_error(L, "bit library self-test failed (%s)", msg);
+	}
+	luaL_register(L, "bit", bit_funcs);
+	return 1;
+}
+
+#pragma endregion
+
+#pragma region lauxlib_c
+
+LUALIB_API void (luaL_register)(lua_State* L, const char* libname,
+	const luaL_Reg* l) {
+	luaI_openlib(L, libname, l, 0);
+}
+
+static int libsize(const luaL_Reg* l) {
+	int size = 0;
+	for (; l->name; l++) size++;
+	return size;
+}
+
+LUALIB_API void luaI_openlib(lua_State* L, const char* libname,
+	const luaL_Reg* l, int nup) {
+	if (libname) {
+		int size = libsize(l);
+		/* check whether lib already exists */
+		luaL_findtable(L, LUA_REGISTRYINDEX, "_LOADED", 1);
+		lua_getfield(L, -1, libname);  /* get _LOADED[libname] */
+		if (!lua_istable(L, -1)) {  /* not found? */
+			lua_pop(L, 1);  /* remove previous result */
+			/* try global variable (and create one if it does not exist) */
+			if (luaL_findtable(L, LUA_GLOBALSINDEX, libname, size) != NULL)
+				luaL_error(L, "name conflict for module " LUA_QS, libname);
+			lua_pushvalue(L, -1);
+			lua_setfield(L, -3, libname);  /* _LOADED[libname] = new table */
+		}
+		lua_remove(L, -2);  /* remove _LOADED table */
+		lua_insert(L, -(nup + 1));  /* move library table to below upvalues */
+	}
+	for (; l->name; l++) {
+		int i;
+		for (i = 0; i < nup; i++)  /* copy upvalues to the top */
+			lua_pushvalue(L, -nup);
+		lua_pushcclosure(L, l->func, nup);
+		lua_setfield(L, -(nup + 2), l->name);
+	}
+	lua_pop(L, nup);  /* remove upvalues */
+}
+
+LUA_API void lua_pushvalue(lua_State* L, int idx) {
+	lua_lock(L);
+	setobj2s(L, L->top, index2adr(L, idx));
+	api_incr_top(L);
+	lua_unlock(L);
+}
+
+LUA_API void lua_remove(lua_State* L, int idx) {
+	StkId p;
+	lua_lock(L);
+	p = index2adr(L, idx);
+	api_checkvalidindex(L, p);
+	while (++p < L->top) setobjs2s(L, p - 1, p);
+	L->top--;
+	lua_unlock(L);
+}
+
+LUA_API void lua_insert(lua_State* L, int idx) {
+	StkId p;
+	StkId q;
+	lua_lock(L);
+	p = index2adr(L, idx);
+	api_checkvalidindex(L, p);
+	for (q = L->top; q > p; q--) setobjs2s(L, q, q - 1);
+	setobjs2s(L, p, L->top);
+	lua_unlock(L);
+}
+
+static Table* getcurrenv(lua_State* L) {
+	if (L->ci == L->base_ci)  /* no enclosing function? */
+		return hvalue(gt(L));  /* use global table as environment */
+	else {
+		Closure* func = curr_func(L);
+		return func->c.env;
+	}
+}
+
+LUA_API void lua_pushcclosure(lua_State* L, lua_CFunction fn, int n) {
+	Closure* cl;
+	lua_lock(L);
+	luaC_checkGC(L);
+	api_checknelems(L, n);
+	cl = luaF_newCclosure(L, n, getcurrenv(L));
+	cl->c.f = fn;
+	L->top -= n;
+	while (n--)
+		setobj2n(L, &cl->c.upvalue[n], L->top + n);
+	setclvalue(L, L->top, cl);
+	lua_assert(iswhite(obj2gco(cl)));
+	api_incr_top(L);
+	lua_unlock(L);
+}
+
+LUA_API void lua_getfield(lua_State* L, int idx, const char* k) {
+	StkId t;
+	TValue key;
+	lua_lock(L);
+	t = index2adr(L, idx);
+	api_checkvalidindex(L, t);
+	setsvalue(L, &key, luaS_new(L, k));
+	luaV_gettable(L, t, &key, L->top);
+	api_incr_top(L);
+	lua_unlock(L);
+}
+
+#define api_checknelems(L, n)	api_check(L, (n) <= (L->top - L->base))
+
+LUA_API void lua_setfield(lua_State* L, int idx, const char* k) {
+	StkId t;
+	TValue key;
+	lua_lock(L);
+	api_checknelems(L, 1);
+	t = index2adr(L, idx);
+	api_checkvalidindex(L, t);
+	setsvalue(L, &key, luaS_new(L, k));
+	luaV_settable(L, t, &key, L->top - 1);
+	L->top--;  /* pop value */
+	lua_unlock(L);
+}
+
+LUALIB_API int luaL_typerror(lua_State* L, int narg, const char* tname) {
+	const char* msg = lua_pushfstring(L, "%s expected, got %s",
+		tname, luaL_typename(L, narg));
+	return luaL_argerror(L, narg, msg);
+}
+
+LUALIB_API int luaL_argerror(lua_State* L, int narg, const char* extramsg) {
+	lua_Debug ar;
+	if (!lua_getstack(L, 0, &ar))  /* no stack frame? */
+		return luaL_error(L, "bad argument #%d (%s)", narg, extramsg);
+	lua_getinfo(L, "n", &ar);
+	if (strcmp(ar.namewhat, "method") == 0) {
+		narg--;  /* do not count `self' */
+		if (narg == 0)  /* error is in the self argument itself? */
+			return luaL_error(L, "calling " LUA_QS " on bad self (%s)",
+				ar.name, extramsg);
+	}
+	if (ar.name == NULL)
+		ar.name = "?";
+	return luaL_error(L, "bad argument #%d to " LUA_QS " (%s)",
+		narg, ar.name, extramsg);
+}
+
+LUALIB_API int luaL_error(lua_State* L, const char* fmt, ...) {
+	va_list argp;
+	va_start(argp, fmt);
+	luaL_where(L, 1);
+	lua_pushvfstring(L, fmt, argp);
+	va_end(argp);
+	lua_concat(L, 2);
+	return lua_error(L);
+}
+
+LUALIB_API void luaL_where(lua_State* L, int level) {
+	lua_Debug ar;
+	if (lua_getstack(L, level, &ar)) {  /* check function at level */
+		lua_getinfo(L, "Sl", &ar);  /* get info about it */
+		if (ar.currentline > 0) {  /* is there info? */
+			lua_pushfstring(L, "%s:%d: ", ar.short_src, ar.currentline);
+			return;
+		}
+	}
+	lua_pushliteral(L, "");  /* else, no information available... */
+}
+
+LUALIB_API const char* luaL_findtable(lua_State* L, int idx,
+	const char* fname, int szhint) {
+	const char* e;
+	lua_pushvalue(L, idx);
+	do {
+		e = strchr(fname, '.');
+		if (e == NULL) e = fname + strlen(fname);
+		lua_pushlstring(L, fname, e - fname);
+		lua_rawget(L, -2);
+		if (lua_isnil(L, -1)) {  /* no such field? */
+			lua_pop(L, 1);  /* remove this nil */
+			lua_createtable(L, 0, (*e == '.' ? 1 : szhint)); /* new table for field */
+			lua_pushlstring(L, fname, e - fname);
+			lua_pushvalue(L, -2);
+			lua_settable(L, -4);  /* set new table into field */
+		}
+		else if (!lua_istable(L, -1)) {  /* field has a non-table value? */
+			lua_pop(L, 2);  /* remove table and value */
+			return fname;  /* return problematic part of the name */
+		}
+		lua_remove(L, -2);  /* remove previous table */
+		fname = e + 1;
+	} while (*e == '.');
+	return NULL;
+}
+
+static void tag_error(lua_State* L, int narg, int tag) {
+	luaL_typerror(L, narg, lua_typename(L, tag));
+}
+
+LUALIB_API lua_Number luaL_checknumber(lua_State* L, int narg) {
+	lua_Number d = lua_tonumber(L, narg);
+	if (d == 0 && !lua_isnumber(L, narg))  /* avoid extra test when d is not 0 */
+		tag_error(L, narg, LUA_TNUMBER);
+	return d;
+}
+
+LUALIB_API lua_Integer luaL_checkinteger(lua_State* L, int narg) {
+	lua_Integer d = lua_tointeger(L, narg);
+	if (d == 0 && !lua_isnumber(L, narg))  /* avoid extra test when d is not 0 */
+		tag_error(L, narg, LUA_TNUMBER);
+	return d;
+}
+
+#pragma endregion
+
+#pragma region linit_c
+
+static const luaL_Reg lualibs[] = {
+/*
+  {"", luaopen_base},
+  {LUA_LOADLIBNAME, luaopen_package},
+  {LUA_TABLIBNAME, luaopen_table},
+  {LUA_IOLIBNAME, luaopen_io},
+  {LUA_OSLIBNAME, luaopen_os},
+  {LUA_STRLIBNAME, luaopen_string},
+  {LUA_MATHLIBNAME, luaopen_math},
+  {LUA_DBLIBNAME, luaopen_debug},
+  {LUA_JITLIBNAME, luaopen_jit},
+  {LUA_BITLIBNAME, luaopen_bit},
+*/
+  {NULL, NULL}
+};
+
+
+LUALIB_API void luaL_openlibs(lua_State* L) {
+	const luaL_Reg* lib = lualibs;
+	for (; lib->func; lib++) {
+		lua_pushcfunction(L, lib->func);
+		lua_pushstring(L, lib->name);
+		lua_call(L, 1, 0);
+	}
+}
+
+#pragma endregion
+
+#pragma region lbaselib_c
+
+//#include "lbaselib.c"
+
+#pragma endregion
+
+#pragma region lmathlib_c
+
+#include "lmathlib.c"
+
+#pragma endregion
+
 bool WrapperXLua::lua_isbooleanW(void* state, int idx)
 {
 	return lua_isboolean((lua_State*)state, idx);
@@ -3252,4 +4048,34 @@ int WrapperXLua::lua_tointegerW(void* state, int idx)
 std::string WrapperXLua::lua_tostringW(void* state, int idx)
 {
 	return lua_tostring((lua_State*)state, idx);
+}
+
+void WrapperXLua::LoadBitLibrary(void* state)
+{
+	if (state)
+	{
+		lua_State* lState = (lua_State*)state;
+		if (lState)
+		{
+			// Load built-in bit library
+			lua_pushcfunction(lState, luaopen_bit);
+			lua_pushstring(lState, LUA_BITLIBNAME);
+			lua_call(lState, 1, 0);
+		}
+	}
+}
+
+void WrapperXLua::LoadMathLibrary(void* state)
+{
+	if (state)
+	{
+		lua_State* lState = (lua_State*)state;
+		if (lState)
+		{
+			// Load built-in math library
+			lua_pushcfunction(lState, luaopen_math);
+			lua_pushstring(lState, LUA_MATHLIBNAME);
+			lua_call(lState, 1, 0);
+		}
+	}
 }

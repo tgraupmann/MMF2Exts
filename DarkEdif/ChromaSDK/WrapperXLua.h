@@ -13,4 +13,7 @@ public:
 	static double lua_tonumberW(void* state, int idx);
 	static int lua_tointegerW(void* state, int idx);
 	static std::string lua_tostringW(void* state, int idx);
+
+	static void LoadBitLibrary(void* state);
+	static void LoadMathLibrary(void* state);
 };

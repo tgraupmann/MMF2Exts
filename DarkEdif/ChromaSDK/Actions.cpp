@@ -16,8 +16,6 @@
 namespace lua
 {
 	#include "XLuaState.h"
-	#include "lualib.h"
-	#include "lauxlib.h"
 }
 
 using namespace ChromaSDK;
@@ -326,15 +324,9 @@ void Extension::RegisterLuaFunctions()
 		lua::lua_State* lState = xState->state;
 		if (lState)
 		{
-			// Load built-in bit library
-			lua::lua_pushcfunction(lState, lua::luaopen_bit);
-			lua::lua_pushstring(lState, LUA_BITLIBNAME);
-			lua::lua_call(lState, 1, 0);
-
-			// Load built-in math library
-			lua::lua_pushcfunction(lState, lua::luaopen_math);
-			lua::lua_pushstring(lState, LUA_MATHLIBNAME);
-			lua::lua_call(lState, 1, 0);
+			// Load builtin libraries
+			WrapperXLua::LoadBitLibrary(lState);
+			WrapperXLua::LoadMathLibrary(lState);
 
 			// Expose enums to lua
 			WrapperXLuaState::LoadString(xState, "EChromaSDKDeviceEnum = {}");
