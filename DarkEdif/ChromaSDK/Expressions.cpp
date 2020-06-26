@@ -20,7 +20,8 @@ int Extension::ExpGetRGB(int red, int green, int blue)
 {
 	if (CondIsInitialized())
 	{
-		return ChromaAnimationAPI::GetRGB(red, green, blue);
+		int color = ChromaAnimationAPI::GetRGB(red, green, blue);
+		return color;
 	}
 	else
 	{
@@ -100,4 +101,29 @@ int Extension::ExpGetFrameCountName(const TCHAR* path)
 	{
 		return 0;
 	}
+}
+
+int Extension::ExpGetColorDataSize(const TCHAR* path)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+
+		int maxLeds;
+		int maxRow;
+		int maxColumn;
+		switch (ChromaAnimationAPI::GetDeviceTypeName(cPath))
+		{
+		case EChromaSDKDeviceTypeEnum::DE_1D:
+			maxLeds = ChromaAnimationAPI::GetMaxLeds(ChromaAnimationAPI::GetDeviceName(cPath));
+			return maxLeds;
+		case EChromaSDKDeviceTypeEnum::DE_2D:
+			maxRow = ChromaAnimationAPI::GetMaxRow(ChromaAnimationAPI::GetDeviceName(cPath));
+			maxColumn = ChromaAnimationAPI::GetMaxColumn(ChromaAnimationAPI::GetDeviceName(cPath));
+			return maxRow * maxColumn;
+		}
+	}
+	return 0;
 }

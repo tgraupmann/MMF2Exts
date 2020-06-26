@@ -93,6 +93,12 @@ public:
 		void CopyNonZeroTargetAllKeysAllFramesName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation);
 		void CopyNonZeroAllKeysAllFramesName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation);
 
+		void CopyAnimationName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation);
+		void AppendAllFramesName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation);
+		void LoadAnimationName(const TCHAR* path);
+		void UnloadAnimationName(const TCHAR* path);
+		void SetColorData(const TCHAR* path, int frameIndex, int colorIndex, int color);
+
 		lua::XLuaState* GetLuaState();
 
 		void RegisterLuaFunctions();
@@ -116,6 +122,7 @@ public:
 		int ExpGetIntDevice(const TCHAR* name);
 
 		int ExpGetFrameCountName(const TCHAR* path);
+		int ExpGetColorDataSize(const TCHAR* path);
 
 
 

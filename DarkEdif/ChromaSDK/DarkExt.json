@@ -28,7 +28,8 @@
 				[ 13, "Lerp All Frames Between Two Colors with Frame RGB Data as Input" ],
 				[ 14, "Lerp All Frames Between Two Colors with Frame RGB Data as Input (Ignore Blank RGB Values)" ],
 				[ 15, "Fill All Frames with Color where RGB is Blank" ],
-				[ 16, "Offset All Frames with RGB Offset" ]
+				[ 16, "Offset All Frames with RGB Offset" ],
+				[ 28, "Set Frame Color Data by Index" ]
 			],
 			[
 				"Animations",
@@ -36,6 +37,8 @@
 				[ 0, "Play Animation" ],
 				[ 21, "Stop Animation" ],
 				[ 1, "Play Composite" ],
+				[ 26, "Load Animation" ],
+				[ 27, "Unload Animation" ],
 				[ 4, "Close Animation" ]
 			],
 			[
@@ -51,7 +54,9 @@
 			[
 				"Layers",
 				[ 18, "Copy All Frames with Source Non-Blank RGB to Target" ],
-				[ 17, "Copy All Frames with Source Non-Blank RGB to Target Non-Blank RGB" ]
+				[ 17, "Copy All Frames with Source Non-Blank RGB to Target Non-Blank RGB" ],
+				[ 24, "Copy Source Animation as Target Animation" ],
+				[ 25, "Append Target Animation to Source Animation" ]
 			]
 		],
 		"ConditionMenu": [
@@ -62,7 +67,10 @@
 			[ 0, "Is Extension Initialized" ],
 			[ 1, "Initialize Extension" ],
 			[ 2, "Get RGB" ],
-			[ 3, "Get Frame Count" ]
+			[ 3, "Get Integer Device Type" ],
+			[ 4, "Get Integer Device" ],
+			[ 5, "Get Frame Count" ],
+			[ 6, "Get Color Data Size" ]
 		],
 		"Actions": [
 			{
@@ -225,6 +233,41 @@
 				"Parameters": [
 					[ "Text", "Path" ]
 				]
+			},
+			{
+				"Title": "Copy Source Animation as Target Animation",
+				"Parameters": [
+					[ "Text", "Source Animation Path" ],
+					[ "Text", "Target Animation Path" ]
+				]
+			},
+			{
+				"Title": "Append Target Animation to Source Animation",
+				"Parameters": [
+					[ "Text", "Source Animation Path" ],
+					[ "Text", "Target Animation Path" ]
+				]
+			},
+			{
+				"Title": "Load Animation",
+				"Parameters": [
+					[ "Text", "Path" ]
+				]
+			},
+			{
+				"Title": "Unload Animation",
+				"Parameters": [
+					[ "Text", "Path" ]
+				]
+			},
+			{
+				"Title": "Set Color Data",
+				"Parameters": [
+					[ "Text", "Path" ],
+					[ "Integer", "Frame Index" ],
+					[ "Integer", "Color Index" ],
+					[ "Integer", "Color" ]
+				]
 			}
 		],
 		"Conditions": [
@@ -243,7 +286,7 @@
 		],
 		"Expressions": [
 			{
-				"Title": "IsInitialized(",
+				"Title": "Is Initialized(",
 				"Returns": "Integer"
 			},
 			{
@@ -275,6 +318,13 @@
 			},
 			{
 				"Title": "GetFrameCountName(",
+				"Parameters": [
+					[ "Text", "Path" ]
+				],
+				"Returns": "Integer"
+			},
+			{
+				"Title": "GetColorDataSize(",
 				"Parameters": [
 					[ "Text", "Path" ]
 				],

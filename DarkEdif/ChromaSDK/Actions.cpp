@@ -264,6 +264,86 @@ void Extension::CopyNonZeroAllKeysAllFramesName(const TCHAR* sourceAnimation, co
 	}
 }
 
+void Extension::CopyAnimationName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsSource(sourceAnimation);
+		string sSource(bsSource.begin(), bsSource.end());
+		const char* cSource = sSource.c_str();
+
+		basic_string<TCHAR> bsTarget(targetAnimation);
+		string sTarget(bsTarget.begin(), bsTarget.end());
+		const char* cTarget = sTarget.c_str();
+
+		ChromaAnimationAPI::CopyAnimationName(cSource, cTarget);
+	}
+}
+void Extension::AppendAllFramesName(const TCHAR* sourceAnimation, const TCHAR* targetAnimation)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsSource(sourceAnimation);
+		string sSource(bsSource.begin(), bsSource.end());
+		const char* cSource = sSource.c_str();
+
+		basic_string<TCHAR> bsTarget(targetAnimation);
+		string sTarget(bsTarget.begin(), bsTarget.end());
+		const char* cTarget = sTarget.c_str();
+
+		ChromaAnimationAPI::AppendAllFramesName(cSource, cTarget);
+	}
+}
+void Extension::LoadAnimationName(const TCHAR* path)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::LoadAnimationName(cPath);
+	}
+}
+void Extension::UnloadAnimationName(const TCHAR* path)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		ChromaAnimationAPI::UnloadAnimationName(cPath);
+	}
+}
+void Extension::SetColorData(const TCHAR* path, int frameIndex, int colorIndex, int color)
+{
+	if (CondIsInitialized())
+	{
+		basic_string<TCHAR> bsPath(path);
+		string sPath(bsPath.begin(), bsPath.end());
+		const char* cPath = sPath.c_str();
+		int animationId = ChromaAnimationAPI::GetAnimation(cPath);
+		if (animationId >= 0)
+		{
+			int maxRow;
+			int maxColumn;
+			switch (ChromaAnimationAPI::GetDeviceTypeName(cPath))
+			{
+			case EChromaSDKDeviceTypeEnum::DE_1D:
+				ChromaAnimationAPI::Set1DColor(animationId, frameIndex, colorIndex, color);
+				break;
+			case EChromaSDKDeviceTypeEnum::DE_2D:
+				maxRow = ChromaAnimationAPI::GetMaxRow(ChromaAnimationAPI::GetDeviceName(cPath));
+				maxColumn = ChromaAnimationAPI::GetMaxColumn(ChromaAnimationAPI::GetDeviceName(cPath));
+				{
+					int r = int(colorIndex / maxColumn);
+					int c = colorIndex % maxColumn;
+					ChromaAnimationAPI::Set2DColor(animationId, frameIndex, r, c, color);
+				}
+			}
+		}
+	}
+}
+
 lua::XLuaState* Extension::GetLuaState()
 {
 	int sid = 0;

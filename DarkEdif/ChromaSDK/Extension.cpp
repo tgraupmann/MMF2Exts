@@ -29,43 +29,49 @@ Extension::Extension(RUNDATA * _rdPtr, EDITDATA * edPtr, CreateObjectInfo * cobP
 		IDs in the JSON here
 	*/
 
-	unsigned int actionIndex = 0;
-	LinkAction(actionIndex++, PlayAnimationName);
-	LinkAction(actionIndex++, PlayComposite);
-	LinkAction(actionIndex++, StaticColor);
-	LinkAction(actionIndex++, StaticColorAllDevices);
-	LinkAction(actionIndex++, CloseAnimationName);
-	LinkAction(actionIndex++, GetAnimation);
-	LinkAction(actionIndex++, DuplicateFirstFrameName);
-	LinkAction(actionIndex++, DuplicateFramesName);
-	LinkAction(actionIndex++, MakeBlankFramesName);
-	LinkAction(actionIndex++, ReduceFramesName);
-	LinkAction(actionIndex++, InsertDelayName);
-	LinkAction(actionIndex++, TrimStartFramesName);
-	LinkAction(actionIndex++, TrimEndFramesName);
-	LinkAction(actionIndex++, MultiplyTargetColorLerpAllFramesName);
-	LinkAction(actionIndex++, MultiplyNonZeroTargetColorLerpAllFramesName);
-	LinkAction(actionIndex++, FillZeroColorAllFramesName);
-	LinkAction(actionIndex++, OffsetColorsAllFramesName);
-	LinkAction(actionIndex++, CopyNonZeroTargetAllKeysAllFramesName);
-	LinkAction(actionIndex++, CopyNonZeroAllKeysAllFramesName);
-	LinkAction(actionIndex++, ActInit);
-	LinkAction(actionIndex++, RegisterLuaFunctions);
-	LinkAction(actionIndex++, StopAnimationName);
-	LinkAction(actionIndex++, ActLuaLoadString);
-	LinkAction(actionIndex++, ActLuaLoadFile);
+	// don't change the order
+	LinkAction(0, PlayAnimationName);
+	LinkAction(1, PlayComposite);
+	LinkAction(2, StaticColor);
+	LinkAction(3, StaticColorAllDevices);
+	LinkAction(4, CloseAnimationName);
+	LinkAction(5, GetAnimation);
+	LinkAction(6, DuplicateFirstFrameName);
+	LinkAction(7, DuplicateFramesName);
+	LinkAction(8, MakeBlankFramesName);
+	LinkAction(9, ReduceFramesName);
+	LinkAction(10, InsertDelayName);
+	LinkAction(11, TrimStartFramesName);
+	LinkAction(12, TrimEndFramesName);
+	LinkAction(13, MultiplyTargetColorLerpAllFramesName);
+	LinkAction(14, MultiplyNonZeroTargetColorLerpAllFramesName);
+	LinkAction(15, FillZeroColorAllFramesName);
+	LinkAction(16, OffsetColorsAllFramesName);
+	LinkAction(17, CopyNonZeroTargetAllKeysAllFramesName);
+	LinkAction(18, CopyNonZeroAllKeysAllFramesName);
+	LinkAction(19, ActInit);
+	LinkAction(20, RegisterLuaFunctions);
+	LinkAction(21, StopAnimationName);
+	LinkAction(22, ActLuaLoadString);
+	LinkAction(23, ActLuaLoadFile);
+	LinkAction(24, CopyAnimationName);
+	LinkAction(25, AppendAllFramesName);
+	LinkAction(26, LoadAnimationName);
+	LinkAction(27, UnloadAnimationName);
+	LinkAction(28, SetColorData);
 
-	unsigned int conditionIndex = 0;
-	LinkCondition(conditionIndex++, CondIsInitialized);
-	LinkCondition(conditionIndex++, CondInit);
+	// don't change the order
+	LinkCondition(0, CondIsInitialized);
+	LinkCondition(1, CondInit);
 
-	unsigned int expressionIndex = 0;
-	LinkExpression(expressionIndex++, ExpIsInitialized);
-	LinkExpression(expressionIndex++, ExpInit);
-	LinkExpression(expressionIndex++, ExpGetRGB);
-	LinkExpression(expressionIndex++, ExpGetIntDeviceType);
-	LinkExpression(expressionIndex++, ExpGetIntDevice);
-	LinkExpression(expressionIndex++, ExpGetFrameCountName);
+	// don't change the order
+	LinkExpression(0, ExpIsInitialized);
+	LinkExpression(1, ExpInit);
+	LinkExpression(2, ExpGetRGB);
+	LinkExpression(3, ExpGetIntDeviceType);
+	LinkExpression(4, ExpGetIntDevice);
+	LinkExpression(5, ExpGetFrameCountName);
+	LinkExpression(6, ExpGetColorDataSize);
 
 	/*
 		This is where you'd do anything you'd do in CreateRunObject in the original SDK
