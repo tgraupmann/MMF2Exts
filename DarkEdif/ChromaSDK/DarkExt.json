@@ -70,7 +70,131 @@
 			[ 3, "Get Integer Device Type" ],
 			[ 4, "Get Integer Device" ],
 			[ 5, "Get Frame Count" ],
-			[ 6, "Get Color Data Size" ]
+			[ 6, "Get Color Data Size" ],
+			[ 7, "Keyboard_RZKEY_ESC(" ],
+			[ 8, "Keyboard_RZKEY_F1(" ],
+			[ 9, "Keyboard_RZKEY_F2(" ],
+			[ 10, "Keyboard_RZKEY_F3(" ],
+			[ 11, "Keyboard_RZKEY_F4(" ],
+			[ 12, "Keyboard_RZKEY_F5(" ],
+			[ 13, "Keyboard_RZKEY_F6(" ],
+			[ 14, "Keyboard_RZKEY_F7(" ],
+			[ 15, "Keyboard_RZKEY_F8(" ],
+			[ 16, "Keyboard_RZKEY_F9(" ],
+			[ 17, "Keyboard_RZKEY_F10(" ],
+			[ 18, "Keyboard_RZKEY_F11(" ],
+			[ 19, "Keyboard_RZKEY_F12(" ],
+			[ 20, "Keyboard_RZKEY_1(" ],
+			[ 21, "Keyboard_RZKEY_2(" ],
+			[ 22, "Keyboard_RZKEY_3(" ],
+			[ 23, "Keyboard_RZKEY_4(" ],
+			[ 24, "Keyboard_RZKEY_5(" ],
+			[ 25, "Keyboard_RZKEY_6(" ],
+			[ 26, "Keyboard_RZKEY_7(" ],
+			[ 27, "Keyboard_RZKEY_8(" ],
+			[ 28, "Keyboard_RZKEY_9(" ],
+			[ 29, "Keyboard_RZKEY_0(" ],
+			[ 30, "Keyboard_RZKEY_A(" ],
+			[ 31, "Keyboard_RZKEY_B(" ],
+			[ 32, "Keyboard_RZKEY_C(" ],
+			[ 33, "Keyboard_RZKEY_D(" ],
+			[ 34, "Keyboard_RZKEY_E(" ],
+			[ 35, "Keyboard_RZKEY_F(" ],
+			[ 36, "Keyboard_RZKEY_G(" ],
+			[ 37, "Keyboard_RZKEY_H(" ],
+			[ 38, "Keyboard_RZKEY_I(" ],
+			[ 39, "Keyboard_RZKEY_J(" ],
+			[ 40, "Keyboard_RZKEY_K(" ],
+			[ 41, "Keyboard_RZKEY_L(" ],
+			[ 42, "Keyboard_RZKEY_M(" ],
+			[ 43, "Keyboard_RZKEY_N(" ],
+			[ 44, "Keyboard_RZKEY_O(" ],
+			[ 45, "Keyboard_RZKEY_P(" ],
+			[ 46, "Keyboard_RZKEY_Q(" ],
+			[ 47, "Keyboard_RZKEY_R(" ],
+			[ 48, "Keyboard_RZKEY_S(" ],
+			[ 49, "Keyboard_RZKEY_T(" ],
+			[ 50, "Keyboard_RZKEY_U(" ],
+			[ 51, "Keyboard_RZKEY_V(" ],
+			[ 52, "Keyboard_RZKEY_W(" ],
+			[ 53, "Keyboard_RZKEY_X(" ],
+			[ 54, "Keyboard_RZKEY_Y(" ],
+			[ 55, "Keyboard_RZKEY_Z(" ],
+			[ 56, "Keyboard_RZKEY_NUMLOCK(" ],
+			[ 57, "Keyboard_RZKEY_NUMPAD0(" ],
+			[ 58, "Keyboard_RZKEY_NUMPAD1(" ],
+			[ 59, "Keyboard_RZKEY_NUMPAD2(" ],
+			[ 60, "Keyboard_RZKEY_NUMPAD3(" ],
+			[ 61, "Keyboard_RZKEY_NUMPAD4(" ],
+			[ 62, "Keyboard_RZKEY_NUMPAD5(" ],
+			[ 63, "Keyboard_RZKEY_NUMPAD6(" ],
+			[ 64, "Keyboard_RZKEY_NUMPAD7(" ],
+			[ 65, "Keyboard_RZKEY_NUMPAD8(" ],
+			[ 66, "Keyboard_RZKEY_NUMPAD9(" ],
+			[ 67, "Keyboard_RZKEY_NUMPAD_DIVIDE(" ],
+			[ 68, "Keyboard_RZKEY_NUMPAD_MULTIPLY(" ],
+			[ 69, "Keyboard_RZKEY_NUMPAD_SUBTRACT(" ],
+			[ 70, "Keyboard_RZKEY_NUMPAD_ADD(" ],
+			[ 71, "Keyboard_RZKEY_NUMPAD_ENTER(" ],
+			[ 72, "Keyboard_RZKEY_NUMPAD_DECIMAL(" ],
+			[ 73, "Keyboard_RZKEY_PRINTSCREEN(" ],
+			[ 74, "Keyboard_RZKEY_SCROLL(" ],
+			[ 75, "Keyboard_RZKEY_PAUSE(" ],
+			[ 76, "Keyboard_RZKEY_INSERT(" ],
+			[ 77, "Keyboard_RZKEY_HOME(" ],
+			[ 78, "Keyboard_RZKEY_PAGEUP(" ],
+			[ 79, "Keyboard_RZKEY_DELETE(" ],
+			[ 80, "Keyboard_RZKEY_END(" ],
+			[ 81, "Keyboard_RZKEY_PAGEDOWN(" ],
+			[ 82, "Keyboard_RZKEY_UP(" ],
+			[ 83, "Keyboard_RZKEY_LEFT(" ],
+			[ 84, "Keyboard_RZKEY_DOWN(" ],
+			[ 85, "Keyboard_RZKEY_RIGHT(" ],
+			[ 86, "Keyboard_RZKEY_TAB(" ],
+			[ 87, "Keyboard_RZKEY_CAPSLOCK(" ],
+			[ 88, "Keyboard_RZKEY_BACKSPACE(" ],
+			[ 89, "Keyboard_RZKEY_ENTER(" ],
+			[ 90, "Keyboard_RZKEY_LCTRL(" ],
+			[ 91, "Keyboard_RZKEY_LWIN(" ],
+			[ 92, "Keyboard_RZKEY_LALT(" ],
+			[ 93, "Keyboard_RZKEY_SPACE(" ],
+			[ 94, "Keyboard_RZKEY_RALT(" ],
+			[ 95, "Keyboard_RZKEY_FN(" ],
+			[ 96, "Keyboard_RZKEY_RMENU(" ],
+			[ 97, "Keyboard_RZKEY_RCTRL(" ],
+			[ 98, "Keyboard_RZKEY_LSHIFT(" ],
+			[ 99, "Keyboard_RZKEY_RSHIFT(" ],
+			[ 100, "Keyboard_RZKEY_MACRO1(" ],
+			[ 101, "Keyboard_RZKEY_MACRO2(" ],
+			[ 102, "Keyboard_RZKEY_MACRO3(" ],
+			[ 103, "Keyboard_RZKEY_MACRO4(" ],
+			[ 104, "Keyboard_RZKEY_MACRO5(" ],
+			[ 105, "Keyboard_RZKEY_OEM_1(" ],
+			[ 106, "Keyboard_RZKEY_OEM_2(" ],
+			[ 107, "Keyboard_RZKEY_OEM_3(" ],
+			[ 108, "Keyboard_RZKEY_OEM_4(" ],
+			[ 109, "Keyboard_RZKEY_OEM_5(" ],
+			[ 110, "Keyboard_RZKEY_OEM_6(" ],
+			[ 111, "Keyboard_RZKEY_OEM_7(" ],
+			[ 112, "Keyboard_RZKEY_OEM_8(" ],
+			[ 113, "Keyboard_RZKEY_OEM_9(" ],
+			[ 114, "Keyboard_RZKEY_OEM_10(" ],
+			[ 115, "Keyboard_RZKEY_OEM_11(" ],
+			[ 116, "Keyboard_RZKEY_EUR_1(" ],
+			[ 117, "Keyboard_RZKEY_EUR_2(" ],
+			[ 118, "Keyboard_RZKEY_JPN_1(" ],
+			[ 119, "Keyboard_RZKEY_JPN_2(" ],
+			[ 120, "Keyboard_RZKEY_JPN_3(" ],
+			[ 121, "Keyboard_RZKEY_JPN_4(" ],
+			[ 122, "Keyboard_RZKEY_JPN_5(" ],
+			[ 123, "Keyboard_RZKEY_KOR_1(" ],
+			[ 124, "Keyboard_RZKEY_KOR_2(" ],
+			[ 125, "Keyboard_RZKEY_KOR_3(" ],
+			[ 126, "Keyboard_RZKEY_KOR_4(" ],
+			[ 127, "Keyboard_RZKEY_KOR_5(" ],
+			[ 128, "Keyboard_RZKEY_KOR_6(" ],
+			[ 129, "Keyboard_RZKEY_KOR_7(" ],
+			[ 130, "Keyboard_RZKEY_INVALID(" ]
 		],
 		"Actions": [
 			{
@@ -328,6 +452,502 @@
 				"Parameters": [
 					[ "Text", "Path" ]
 				],
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_ESC(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_F1(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_F2(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_F3(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_F4(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_F5(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_F6(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_F7(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_F8(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_F9(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_F10(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_F11(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_F12(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_1(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_2(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_3(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_4(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_5(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_6(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_7(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_8(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_9(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_0(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_A(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_B(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_C(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_D(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_E(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_F(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_G(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_H(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_I(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_J(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_K(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_L(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_M(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_N(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_O(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_P(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_Q(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_R(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_S(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_T(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_U(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_V(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_W(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_X(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_Y(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_Z(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMLOCK(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD0(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD1(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD2(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD3(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD4(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD5(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD6(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD7(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD8(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD9(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD_DIVIDE(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD_MULTIPLY(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD_SUBTRACT(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD_ADD(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD_ENTER(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_NUMPAD_DECIMAL(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_PRINTSCREEN(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_SCROLL(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_PAUSE(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_INSERT(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_HOME(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_PAGEUP(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_DELETE(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_END(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_PAGEDOWN(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_UP(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_LEFT(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_DOWN(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_RIGHT(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_TAB(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_CAPSLOCK(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_BACKSPACE(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_ENTER(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_LCTRL(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_LWIN(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_LALT(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_SPACE(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_RALT(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_FN(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_RMENU(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_RCTRL(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_LSHIFT(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_RSHIFT(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_MACRO1(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_MACRO2(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_MACRO3(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_MACRO4(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_MACRO5(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_OEM_1(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_OEM_2(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_OEM_3(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_OEM_4(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_OEM_5(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_OEM_6(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_OEM_7(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_OEM_8(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_OEM_9(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_OEM_10(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_OEM_11(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_EUR_1(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_EUR_2(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_JPN_1(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_JPN_2(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_JPN_3(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_JPN_4(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_JPN_5(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_KOR_1(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_KOR_2(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_KOR_3(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_KOR_4(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_KOR_5(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_KOR_6(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_KOR_7(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "Keyboard_RZKEY_INVALID(",
 				"Returns": "Integer"
 			}
 		],
