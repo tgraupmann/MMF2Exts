@@ -4030,6 +4030,11 @@ bool WrapperXLua::lua_isstringW(void* state, int idx)
 	return lua_isstring((lua_State*)state, idx);
 }
 
+bool WrapperXLua::lua_istableW(void* state, int idx)
+{
+	return lua_istable((lua_State*)state, idx);
+}
+
 bool WrapperXLua::lua_tobooleanW(void* state, int idx)
 {
 	return lua_toboolean((lua_State*)state, idx) == 1;
@@ -4048,6 +4053,11 @@ int WrapperXLua::lua_tointegerW(void* state, int idx)
 std::string WrapperXLua::lua_tostringW(void* state, int idx)
 {
 	return lua_tostring((lua_State*)state, idx);
+}
+
+void WrapperXLua::lua_rawgetiW(void* state, int idx, int n)
+{
+	lua_rawgeti((lua_State*)state, idx, n);
 }
 
 void WrapperXLua::LoadBitLibrary(void* state)

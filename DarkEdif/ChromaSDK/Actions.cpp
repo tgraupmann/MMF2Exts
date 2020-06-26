@@ -16147,15 +16147,35 @@ int Extension::LuaSetKeysColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: color
-#pragma message("TODO - add support for SetKeysColorAllFramesName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		// is table
+		if (!WrapperXLua::lua_istableW(state, 2))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 2, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysColorAllFramesName(path.c_str(), rzkeys, keyCount, color);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
