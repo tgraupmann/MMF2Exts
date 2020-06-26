@@ -4518,17 +4518,39 @@ int Extension::LuaCopyKeysColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: keys
-		// FieldType: int
-		// FieldName: size
-#pragma message("TODO - add support for CopyKeysColor")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_istableW(state, 4))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int size = WrapperXLua::lua_tointegerW(state, 5);
+		int* keys = new int[size];
+		for (int i = 0; i < size; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 4, i);
+			keys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::CopyKeysColor(sourceAnimationId, targetAnimationId, frameId, keys, size);
+		delete[] keys;
 		return 0;
 	}
 	else
@@ -4545,15 +4567,34 @@ int Extension::LuaCopyKeysColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: const int*
-		// FieldName: keys
-		// FieldType: int
-		// FieldName: size
-#pragma message("TODO - add support for CopyKeysColorAllFrames")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int size = WrapperXLua::lua_tointegerW(state, 4);
+		int* keys = new int[size];
+		for (int i = 0; i < size; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			keys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::CopyKeysColorAllFrames(sourceAnimationId, targetAnimationId, keys, size);
+		delete[] keys;
 		return 0;
 	}
 	else
@@ -4570,15 +4611,34 @@ int Extension::LuaCopyKeysColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: const int*
-		// FieldName: keys
-		// FieldType: int
-		// FieldName: size
-#pragma message("TODO - add support for CopyKeysColorAllFramesName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int size = WrapperXLua::lua_tointegerW(state, 4);
+		int* keys = new int[size];
+		for (int i = 0; i < size; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			keys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::CopyKeysColorAllFramesName(sourceAnimation.c_str(), targetAnimation.c_str(), keys, size);
+		delete[] keys;
 		return 0;
 	}
 	else
@@ -4596,17 +4656,39 @@ int Extension::LuaCopyKeysColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: keys
-		// FieldType: int
-		// FieldName: size
-#pragma message("TODO - add support for CopyKeysColorName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_istableW(state, 4))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int size = WrapperXLua::lua_tointegerW(state, 5);
+		int* keys = new int[size];
+		for (int i = 0; i < size; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 4, i);
+			keys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::CopyKeysColorName(sourceAnimation.c_str(), targetAnimation.c_str(), frameId, keys, size);
+		delete[] keys;
 		return 0;
 	}
 	else
@@ -4624,19 +4706,44 @@ int Extension::LuaCopyKeysColorOffset(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: sourceAnimationId
-		// FieldType: int
-		// FieldName: targetAnimationId
-		// FieldType: int
-		// FieldName: sourceFrameId
-		// FieldType: int
-		// FieldName: targetFrameId
-		// FieldType: const int*
-		// FieldName: keys
-		// FieldType: int
-		// FieldName: size
-#pragma message("TODO - add support for CopyKeysColorOffset")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int sourceAnimationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int targetAnimationId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int sourceFrameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int targetFrameId = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_istableW(state, 5))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int size = WrapperXLua::lua_tointegerW(state, 6);
+		int* keys = new int[size];
+		for (int i = 0; i < size; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 5, i);
+			keys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::CopyKeysColorOffset(sourceAnimationId, targetAnimationId, sourceFrameId, targetFrameId, keys, size);
+		delete[] keys;
 		return 0;
 	}
 	else
@@ -4654,19 +4761,44 @@ int Extension::LuaCopyKeysColorOffsetName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: sourceAnimation
-		// FieldType: const char*
-		// FieldName: targetAnimation
-		// FieldType: int
-		// FieldName: sourceFrameId
-		// FieldType: int
-		// FieldName: targetFrameId
-		// FieldType: const int*
-		// FieldName: keys
-		// FieldType: int
-		// FieldName: size
-#pragma message("TODO - add support for CopyKeysColorOffsetName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string sourceAnimation = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isstringW(state, 2))
+		{
+			return -1;
+		}
+		string targetAnimation = WrapperXLua::lua_tostringW(state, 2);
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int sourceFrameId = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int targetFrameId = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_istableW(state, 5))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int size = WrapperXLua::lua_tointegerW(state, 6);
+		int* keys = new int[size];
+		for (int i = 0; i < size; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 5, i);
+			keys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::CopyKeysColorOffsetName(sourceAnimation.c_str(), targetAnimation.c_str(), sourceFrameId, targetFrameId, keys, size);
+		delete[] keys;
 		return 0;
 	}
 	else
@@ -16095,17 +16227,39 @@ int Extension::LuaSetKeysColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: color
-#pragma message("TODO - add support for SetKeysColor")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 5);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysColor(animationId, frameId, rzkeys, keyCount, color);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16122,15 +16276,34 @@ int Extension::LuaSetKeysColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: color
-#pragma message("TODO - add support for SetKeysColorAllFrames")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_istableW(state, 2))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 2, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysColorAllFrames(animationId, rzkeys, keyCount, color);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16152,7 +16325,6 @@ int Extension::LuaSetKeysColorAllFramesName(lua::lua_State* state)
 			return -1;
 		}
 		string path = WrapperXLua::lua_tostringW(state, 1);
-		// is table
 		if (!WrapperXLua::lua_istableW(state, 2))
 		{
 			return -1;
@@ -16192,19 +16364,44 @@ int Extension::LuaSetKeysColorAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
-#pragma message("TODO - add support for SetKeysColorAllFramesRGB")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_istableW(state, 2))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 6);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 2, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysColorAllFramesRGB(animationId, rzkeys, keyCount, red, green, blue);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16221,19 +16418,44 @@ int Extension::LuaSetKeysColorAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
-#pragma message("TODO - add support for SetKeysColorAllFramesRGBName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_istableW(state, 2))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 6);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 2, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysColorAllFramesRGBName(path.c_str(), rzkeys, keyCount, red, green, blue);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16249,17 +16471,39 @@ int Extension::LuaSetKeysColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: color
-#pragma message("TODO - add support for SetKeysColorName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 5);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysColorName(path.c_str(), frameId, rzkeys, keyCount, color);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16276,21 +16520,49 @@ int Extension::LuaSetKeysColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
-#pragma message("TODO - add support for SetKeysColorRGB")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 7);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysColorRGB(animationId, frameId, rzkeys, keyCount, red, green, blue);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16307,21 +16579,49 @@ int Extension::LuaSetKeysColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
-#pragma message("TODO - add support for SetKeysColorRGBName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 7);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysColorRGBName(path.c_str(), frameId, rzkeys, keyCount, red, green, blue);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16338,17 +16638,39 @@ int Extension::LuaSetKeysNonZeroColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: color
-#pragma message("TODO - add support for SetKeysNonZeroColor")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 5);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysNonZeroColor(animationId, frameId, rzkeys, keyCount, color);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16365,15 +16687,34 @@ int Extension::LuaSetKeysNonZeroColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: color
-#pragma message("TODO - add support for SetKeysNonZeroColorAllFrames")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_istableW(state, 2))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 2, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysNonZeroColorAllFrames(animationId, rzkeys, keyCount, color);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16390,15 +16731,34 @@ int Extension::LuaSetKeysNonZeroColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: color
-#pragma message("TODO - add support for SetKeysNonZeroColorAllFramesName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_istableW(state, 2))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 2, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysNonZeroColorAllFramesName(path.c_str(), rzkeys, keyCount, color);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16415,17 +16775,39 @@ int Extension::LuaSetKeysNonZeroColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: color
-#pragma message("TODO - add support for SetKeysNonZeroColorName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 5);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysNonZeroColorName(path.c_str(), frameId, rzkeys, keyCount, color);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16442,21 +16824,49 @@ int Extension::LuaSetKeysNonZeroColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
-#pragma message("TODO - add support for SetKeysNonZeroColorRGB")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 7);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysNonZeroColorRGB(animationId, frameId, rzkeys, keyCount, red, green, blue);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16473,21 +16883,49 @@ int Extension::LuaSetKeysNonZeroColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
-#pragma message("TODO - add support for SetKeysNonZeroColorRGBName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 7);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysNonZeroColorRGBName(path.c_str(), frameId, rzkeys, keyCount, red, green, blue);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16504,17 +16942,39 @@ int Extension::LuaSetKeysZeroColor(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: color
-#pragma message("TODO - add support for SetKeysZeroColor")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 5);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysZeroColor(animationId, frameId, rzkeys, keyCount, color);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16531,15 +16991,34 @@ int Extension::LuaSetKeysZeroColorAllFrames(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: color
-#pragma message("TODO - add support for SetKeysZeroColorAllFrames")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_istableW(state, 2))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 2, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysZeroColorAllFrames(animationId, rzkeys, keyCount, color);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16556,15 +17035,34 @@ int Extension::LuaSetKeysZeroColorAllFramesName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: color
-#pragma message("TODO - add support for SetKeysZeroColorAllFramesName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_istableW(state, 2))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 4);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 2, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysZeroColorAllFramesName(path.c_str(), rzkeys, keyCount, color);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16581,19 +17079,44 @@ int Extension::LuaSetKeysZeroColorAllFramesRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
-#pragma message("TODO - add support for SetKeysZeroColorAllFramesRGB")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_istableW(state, 2))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 6);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 2, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysZeroColorAllFramesRGB(animationId, rzkeys, keyCount, red, green, blue);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16610,19 +17133,44 @@ int Extension::LuaSetKeysZeroColorAllFramesRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
-#pragma message("TODO - add support for SetKeysZeroColorAllFramesRGBName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_istableW(state, 2))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 3))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 3);
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 6);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 2, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysZeroColorAllFramesRGBName(path.c_str(), rzkeys, keyCount, red, green, blue);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16639,17 +17187,39 @@ int Extension::LuaSetKeysZeroColorName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: color
-#pragma message("TODO - add support for SetKeysZeroColorName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int color = WrapperXLua::lua_tointegerW(state, 5);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysZeroColorName(path.c_str(), frameId, rzkeys, keyCount, color);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16666,21 +17236,49 @@ int Extension::LuaSetKeysZeroColorRGB(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: int
-		// FieldName: animationId
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
-#pragma message("TODO - add support for SetKeysZeroColorRGB")
+		if (!WrapperXLua::lua_isnumberW(state, 1))
+		{
+			return -1;
+		}
+		int animationId = WrapperXLua::lua_tointegerW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 7);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysZeroColorRGB(animationId, frameId, rzkeys, keyCount, red, green, blue);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
@@ -16697,21 +17295,49 @@ int Extension::LuaSetKeysZeroColorRGBName(lua::lua_State* state)
 {
 	if (state)
 	{
-		// FieldType: const char*
-		// FieldName: path
-		// FieldType: int
-		// FieldName: frameId
-		// FieldType: const int*
-		// FieldName: rzkeys
-		// FieldType: int
-		// FieldName: keyCount
-		// FieldType: int
-		// FieldName: red
-		// FieldType: int
-		// FieldName: green
-		// FieldType: int
-		// FieldName: blue
-#pragma message("TODO - add support for SetKeysZeroColorRGBName")
+		if (!WrapperXLua::lua_isstringW(state, 1))
+		{
+			return -1;
+		}
+		string path = WrapperXLua::lua_tostringW(state, 1);
+		if (!WrapperXLua::lua_isnumberW(state, 2))
+		{
+			return -1;
+		}
+		int frameId = WrapperXLua::lua_tointegerW(state, 2);
+		if (!WrapperXLua::lua_istableW(state, 3))
+		{
+			return -1;
+		}
+		if (!WrapperXLua::lua_isnumberW(state, 4))
+		{
+			return -1;
+		}
+		int keyCount = WrapperXLua::lua_tointegerW(state, 4);
+		if (!WrapperXLua::lua_isnumberW(state, 5))
+		{
+			return -1;
+		}
+		int red = WrapperXLua::lua_tointegerW(state, 5);
+		if (!WrapperXLua::lua_isnumberW(state, 6))
+		{
+			return -1;
+		}
+		int green = WrapperXLua::lua_tointegerW(state, 6);
+		if (!WrapperXLua::lua_isnumberW(state, 7))
+		{
+			return -1;
+		}
+		int blue = WrapperXLua::lua_tointegerW(state, 7);
+		int* rzkeys = new int[keyCount];
+		for (int i = 0; i < keyCount; ++i)
+		{
+			// copy integers from lua type
+			WrapperXLua::lua_rawgetiW(state, 3, i);
+			rzkeys[i] = WrapperXLua::lua_tointegerW(state, -1);
+		}
+		ChromaAnimationAPI::SetKeysZeroColorRGBName(path.c_str(), frameId, rzkeys, keyCount, red, green, blue);
+		delete[] rzkeys;
 		return 0;
 	}
 	else
