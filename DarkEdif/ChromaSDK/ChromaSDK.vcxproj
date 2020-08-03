@@ -97,8 +97,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Runtime Unicode|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\..\XLua\XLua\Lua;..\..\..\XLua\XLua;..\..\MMF2SDK_Unicode\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;$(SDKRootFolder)/Inc/$(_TargetPlat);$(SDKRootFolder)/Inc/Shared;$(SolutionDir)Temp/$(ExtName);$(SDKRootFolder)/Inc;..\..\..\XLua\XLua\Lua;..\..\..\XLua\XLua;..\..\MMF2SDK_Unicode\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Public\XLua\XLua\Release</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Lib\Shared\json.cpp" />
@@ -227,7 +230,7 @@
     <Object Include="ViewStyle.obj" />
     <Object Include="WordList.obj" />
     <Object Include="xlua.obj" />
-    <Object Include="XLuaGlobal.obj"/>
+    <Object Include="XLuaGlobal.obj" />
     <Object Include="XLuaObject.obj" />
     <Object Include="XLuaState.obj" />
     <Object Include="XPM.obj" />
