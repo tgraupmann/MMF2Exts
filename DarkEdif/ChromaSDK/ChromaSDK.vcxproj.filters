@@ -116,6 +116,9 @@
     <None Include="DarkExt.json">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="DarkExt.PostMinify.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

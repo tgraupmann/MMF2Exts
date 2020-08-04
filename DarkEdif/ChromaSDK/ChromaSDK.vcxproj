@@ -102,6 +102,9 @@
     <Link>
       <AdditionalLibraryDirectories>C:\Public\XLua\XLua\Release</AdditionalLibraryDirectories>
     </Link>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_USING_V110_SDK71_;%(PreprocessorDefinitions);DARKEXT_JSON_FILE_EXTERNAL</PreprocessorDefinitions>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Lib\Shared\json.cpp" />
@@ -126,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="DarkExt.json" />
+    <None Include="DarkExt.PostMinify.json" />
     <None Include="Icon.png" />
   </ItemGroup>
   <ItemGroup>

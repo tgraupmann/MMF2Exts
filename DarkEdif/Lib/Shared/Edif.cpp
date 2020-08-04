@@ -968,7 +968,7 @@ int Edif::GetDependency (char *& Buffer, size_t &Size, const TCHAR * FileExtensi
 	if (!Resource)
 		return DependencyNotFound;
 
-	HRSRC res = FindResource (hInstLib, MAKEINTRESOURCE (Resource), _T("EDIF"));
+	HRSRC res = FindResource (hInstLib, MAKEINTRESOURCE (Resource), _T("Edif"));
 
 	if (!res)
 	{
