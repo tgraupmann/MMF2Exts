@@ -7,10 +7,10 @@ bool Extension::CondIsInitialized()
 {
 	/*
 	OutputDebugStringA("CondIsInitialized: Result=");
-	OutputDebugStringA(_mInitResult == RZRESULT_SUCCESS ? "SUCCESS" : "FAILED");
+	OutputDebugStringA(_sInitResult == RZRESULT_SUCCESS ? "SUCCESS" : "FAILED");
 	OutputDebugStringA("\r\n");
 	*/
-	return _mInitResult == RZRESULT_SUCCESS;
+	return _sInitResult == RZRESULT_SUCCESS;
 }
 
 bool Extension::CondInit()
@@ -38,7 +38,7 @@ bool Extension::CondInit()
 		appInfo.SupportedDevice = (0x01 | 0x02 | 0x04 | 0x08 | 0x10 | 0x20);
 		appInfo.Category = 1;
 
-		_mInitResult = ChromaAnimationAPI::InitSDK(&appInfo);
+		_sInitResult = ChromaAnimationAPI::InitSDK(&appInfo);
 	}
 	return CondIsInitialized();
 }

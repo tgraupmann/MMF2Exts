@@ -3,6 +3,8 @@
 
 using namespace ChromaSDK;
 
+RZRESULT Extension::_sInitResult = -1;
+
 ///
 /// EXTENSION CONSTRUCTOR/DESTRUCTOR
 ///
@@ -10,7 +12,6 @@ using namespace ChromaSDK;
 Extension::Extension(RUNDATA * _rdPtr, EDITDATA * edPtr, CreateObjectInfo * cobPtr)
 	: rdPtr(_rdPtr), rhPtr(_rdPtr->rHo.AdRunHeader), Runtime(_rdPtr), FusionDebugger(this)
 {
-	_mInitResult = -1;
 	if (!ChromaAnimationAPI::IsInitializedAPI())
 	{
 		RZRESULT result = ChromaAnimationAPI::InitAPI();

@@ -2721,5 +2721,5 @@ public:
 #pragma endregion
 
 protected:
-	RZRESULT _mInitResult;
+	static RZRESULT _sInitResult;
 };

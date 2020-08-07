@@ -6,11 +6,21 @@
 #define IDR_EDIF_ICON					101
 #define IDR_EDIF_JSON					102
 
+#ifndef EXTENSION_VERSION
 #define EXTENSION_VERSION				1
+#endif
+#ifndef PROJECT_NAME
 #define PROJECT_NAME					"ChromaSDK"
+#endif
+#ifndef COMPANY_NAME
 #define COMPANY_NAME					"Razer US Ltd."
+#endif
+#ifndef YEAR
 #define YEAR							"2020"
-#define BUILD_DATE						"08-04-2020"
+#endif
+#ifndef BUILD_DATE
+#define BUILD_DATE						"08-07-2020"
+#endif
 
 // Next default values for new objects
 // 
