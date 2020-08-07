@@ -63,6 +63,11 @@ public:
 
 	/// Actions
 
+		void ActSetAppInfoTitle(const TCHAR* val);
+		void ActSetAppInfoDescription(const TCHAR* val);
+		void ActSetAppInfoAuthorName(const TCHAR* val);
+		void ActSetAppInfoAuthorContact(const TCHAR* val);
+
 		void ActInit();
 
 		void PlayAnimationName(const TCHAR* path, int loop);
@@ -2722,4 +2727,8 @@ public:
 
 protected:
 	static RZRESULT _sInitResult;
+	static std::wstring _sAppInfoTitle;
+	static std::wstring _sAppInfoDescription;
+	static std::wstring _sAppInfoAuthorName;
+	static std::wstring _sAppInfoAuthorContact;
 };

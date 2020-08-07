@@ -23,10 +23,10 @@ bool Extension::CondInit()
 	{
 		APPINFOTYPE appInfo = {};
 
-		_tcscpy_s(appInfo.Title, 256, _T("ChromaSDK Extension CF2.5"));
-		_tcscpy_s(appInfo.Description, 1024, _T("ChromaSDK for ClickTeam Fusion 2.5"));
-		_tcscpy_s(appInfo.Author.Name, 256, _T("Razer"));
-		_tcscpy_s(appInfo.Author.Contact, 256, _T("https://developer.razer.com/chroma"));
+		_tcscpy_s(appInfo.Title, 256, _sAppInfoTitle.c_str());
+		_tcscpy_s(appInfo.Description, 1024, _sAppInfoDescription.c_str());
+		_tcscpy_s(appInfo.Author.Name, 256, _sAppInfoAuthorName.c_str());
+		_tcscpy_s(appInfo.Author.Contact, 256, _sAppInfoAuthorContact.c_str());
 
 		//appInfo.SupportedDevice = 
 		//    0x01 | // Keyboards

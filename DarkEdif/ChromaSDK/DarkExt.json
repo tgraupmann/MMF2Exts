@@ -13,6 +13,10 @@
 		"ActionMenu": [
 			[
 				"Setup",
+				[ 29, "Set AppInfo Title (Max 256 chars)" ],
+				[ 30, "Set AppInfo Description (Max 1024 chars)" ],
+				[ 31, "Set AppInfo Author Name (Max 256 chars)" ],
+				[ 32, "Set AppInfo Author Contact (Max 256 chars)" ],
 				[ 19, "Initialize Extension" ]
 			],
 			[
@@ -391,6 +395,30 @@
 					[ "Integer", "Frame Index" ],
 					[ "Integer", "Color Index" ],
 					[ "Integer", "Color" ]
+				]
+			},
+			{
+				"Title": "Set AppInfo Title",
+				"Parameters": [
+					[ "Text", "Val" ]
+				]
+			},
+			{
+				"Title": "Set AppInfo Description",
+				"Parameters": [
+					[ "Text", "Val" ]
+				]
+			},
+			{
+				"Title": "Set AppInfo Author Name",
+				"Parameters": [
+					[ "Text", "Val" ]
+				]
+			},
+			{
+				"Title": "Set AppInfo Author Contact",
+				"Parameters": [
+					[ "Text", "Val" ]
 				]
 			}
 		],

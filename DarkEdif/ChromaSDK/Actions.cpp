@@ -21,6 +21,28 @@ namespace lua
 using namespace ChromaSDK;
 using namespace std;
 
+std::wstring Extension::_sAppInfoTitle = _T("ChromaSDK Extension CF2.5");
+std::wstring Extension::_sAppInfoDescription = _T("ChromaSDK for ClickTeam Fusion 2.5");
+std::wstring Extension::_sAppInfoAuthorName = _T("Razer");
+std::wstring Extension::_sAppInfoAuthorContact = _T("https://developer.razer.com/chroma");
+
+void Extension::ActSetAppInfoTitle(const TCHAR* val)
+{
+	_sAppInfoTitle = val;
+}
+void Extension::ActSetAppInfoDescription(const TCHAR* val)
+{
+	_sAppInfoDescription = val;
+}
+void Extension::ActSetAppInfoAuthorName(const TCHAR* val)
+{
+	_sAppInfoAuthorName = val;
+}
+void Extension::ActSetAppInfoAuthorContact(const TCHAR* val)
+{
+	_sAppInfoAuthorContact = val;
+}
+
 void Extension::ActInit()
 {
 	CondInit();

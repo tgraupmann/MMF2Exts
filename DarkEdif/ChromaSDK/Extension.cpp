@@ -61,6 +61,11 @@ Extension::Extension(RUNDATA * _rdPtr, EDITDATA * edPtr, CreateObjectInfo * cobP
 	LinkAction(27, UnloadAnimationName);
 	LinkAction(28, SetColorData);
 
+	LinkAction(29, ActSetAppInfoTitle);
+	LinkAction(30, ActSetAppInfoDescription);
+	LinkAction(31, ActSetAppInfoAuthorName);
+	LinkAction(32, ActSetAppInfoAuthorContact);
+
 	// don't change the order
 	LinkCondition(0, CondIsInitialized);
 	LinkCondition(1, CondInit);
